@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928b9004db1054b46bfa7963c9ab1d4d, type: 3}
+  m_Name: Heroes
+  m_EditorClassIdentifier: 
+  ModelHeroes:
+  - Prefab: {fileID: 3793866131547914973, guid: 18813bef6a41297458ac4ac2f26aa88b, type: 3}
+    Image: {fileID: 0}
+    Heath: 0
+    Damage: 0
+    Strong: 1
+    Price: 5
+    GetMoney: 1
+    NeedTotalStrong: 0
+  - Prefab: {fileID: 1162617799379042621, guid: 28e9ad9f1c8143d499c17dc2eb145b36, type: 3}
+    Image: {fileID: 0}
+    Heath: 0
+    Damage: 0
+    Strong: 2
+    Price: 10
+    GetMoney: 2
+    NeedTotalStrong: 20
+  - Prefab: {fileID: 1485912784665533334, guid: 1ff0788d0664e1e4290ff40be5012e32, type: 3}
+    Image: {fileID: 0}
+    Heath: 0
+    Damage: 0
+    Strong: 4
+    Price: 15
+    GetMoney: 3
+    NeedTotalStrong: 60
+  - Prefab: {fileID: 8320052213350418906, guid: 06f1f59d5a1ef63489c6878d21474bcd, type: 3}
+    Image: {fileID: 0}
+    Heath: 0
+    Damage: 0
+    Strong: 8
+    Price: 20
+    GetMoney: 4
+    NeedTotalStrong: 140
