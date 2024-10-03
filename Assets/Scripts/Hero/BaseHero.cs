@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 namespace Game
 {
-    public abstract class BaseHero : DragHandler, IMerge
+    public abstract class BaseHero : DragHandler, IMerge, IMoney
     {
         [field: SerializeField] public ModelHero Model { get; private set; }
 
@@ -19,6 +19,7 @@ namespace Game
         public int CurrentIndex;
         public event IMerge.CallBackMerge OnMerge;
         public event IMoney.CallbackMoney OnMoneyChange;
+        public event IMoney.CallbackUpMoney OnMoneyUp;
 
         public void Init(LayerManager manager, ModelHero model)
         {
@@ -54,7 +55,8 @@ namespace Game
         {
             base.OnStartDrag();
             OnMoneyChange.Invoke(Model.GetMoney);
-            //_animator.SetTrigger("IsAttack");
+            OnMoneyUp.Invoke();
+            _animator.SetTrigger("IsAttack");
         }
 
         public override void OnEndDrag()

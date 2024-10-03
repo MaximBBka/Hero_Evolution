@@ -5,8 +5,8 @@ namespace Game
     public abstract class DragHandler : MonoBehaviour
     {
         private Vector3 pos2;
-        private Vector2 areaPositive = new Vector2(6f, 4.5f);
-        private Vector2 areaNegative = new Vector2(-8f, -1.5f);
+        private Vector2 areaPositive = new Vector2(5.5f, 3f);
+        private Vector2 areaNegative = new Vector2(-8.3f, -1.8f);
         public virtual void OnMouseDrag()
         {
             Debug.Log("OnDrag");

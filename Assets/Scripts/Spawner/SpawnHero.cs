@@ -11,6 +11,7 @@ namespace Game
         [SerializeField] List<BaseHero> _listHero;
 
         private MainUI _mainUI;
+        private WindowBook _windowBook;
         private ClassPool _pool;
         private ModelHero _currentModel;
 
@@ -18,14 +19,16 @@ namespace Game
         public int MaxHero;
 
         [Inject]
-        public void Construct(MainUI ui)
+        public void Construct(MainUI ui, WindowBook window)
         {
             _mainUI = ui;
+            _windowBook = window;
         }
 
         public void Start()
         {
-            SetHero();
+            _currentModel = sOHero.ModelHeroes[0];
+           // SetHero();
             _pool = new ClassPool(1);
         }
 
@@ -44,8 +47,9 @@ namespace Game
                     BaseHero newUnit = newMono.Get() as BaseHero;
                     newUnit.Init(_manager, sOHero.ModelHeroes[i + 1]);
                     newUnit.transform.position = hero.transform.position;
+                    _windowBook.ShowCharacter(i + 1);
                     HeroSubcribe(newUnit);
-                    SetHero();
+                   // SetHero();
                 }
             }
         }
@@ -55,13 +59,17 @@ namespace Game
             if (_listHero.Count < MaxHero && _mainUI._money >= _currentModel.Price)
             {
                 _mainUI.AddMoney(-_currentModel.Price);
-                Vector3 spawnPos = new Vector3(Random.Range(-8, 6), Random.Range(4.5f, -1.5f), 0);
+                Vector3 spawnPos = new Vector3(Random.Range(-8.3f, 5.5f), Random.Range(3f, -1.8f), 0);
                 MonoPool mono = _pool.Get(_currentModel.Prefab, _spawnPool);
                 BaseHero hero = mono.Get() as BaseHero;
                 hero.transform.position = spawnPos;
                 hero.Init(_manager, _currentModel);
                 HeroSubcribe(hero);
-                SetHero();
+
+                Vector3 vector = new Vector3(hero.transform.position.x, hero.transform.position.y, hero.transform.position.z);
+                vector.z = _manager.SetLayer(hero.transform.position.y) + Random.Range(0.0001f, 0.1111f);
+                hero.transform.position = vector;
+                //SetHero();
             }
         }
         public void SetHero()
@@ -74,6 +82,18 @@ namespace Game
                     _currentModel = sOHero.ModelHeroes[i];
                     if (currentModel == _currentModel.Prefab) return;
                     Replace(currentModel, sOHero.ModelHeroes[i].Prefab);
+                    _mainUI.ImagePrice.sprite = _currentModel.Image;
+                    _mainUI.TextPrice.SetText($"{_currentModel.Price}");
+                    if(_currentModel.GetType() == sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 1].GetType())
+                    {
+                        _mainUI.ImageAds.sprite = _currentModel.Image;
+                    }else if(_currentModel.GetType() == sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 2].GetType())
+                    {
+                        _mainUI.ImageAds.sprite = sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 1].Image;
+                    }else
+                    {
+                        _mainUI.ImageAds.sprite = sOHero.ModelHeroes[i + 2].Image;
+                    }
                     return;
                 }         
             }
@@ -83,6 +103,7 @@ namespace Game
         {
             hero.OnMerge += MergeUnit;
             hero.OnMoneyChange += _mainUI.AddMoney;
+            hero.OnMoneyUp += _mainUI.UpMoney;
             _listHero.Add(hero);
             CalculateStrong();
         }
@@ -90,6 +111,7 @@ namespace Game
         {
             hero.OnMerge -= MergeUnit;
             hero.OnMoneyChange -= _mainUI.AddMoney;
+            hero.OnMoneyUp -= _mainUI.UpMoney;
             _listHero.Remove(hero);
         }
         private void CalculateStrong()
