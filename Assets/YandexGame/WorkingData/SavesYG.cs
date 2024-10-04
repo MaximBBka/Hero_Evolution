@@ -21,6 +21,8 @@ namespace YG
         // Ваши сохранения
         public List<int> BaseHeroes = new List<int>();
         public int Strong;
+        public int Money;
+        public int MaxStrong;
         public int TotalBattle;
         // ...
 

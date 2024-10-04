@@ -19,7 +19,7 @@ MonoBehaviour:
     Damage: 0
     Strong: 0
     Price: 0
-    GetMoney: 0
+    GetMoney: 1
     GetRes: 1
     NeedTotalStrong: 0
     Index: 1
@@ -29,7 +29,7 @@ MonoBehaviour:
     Damage: 0
     Strong: 1
     Price: 1
-    GetMoney: 0
+    GetMoney: 2
     GetRes: 2
     NeedTotalStrong: 0
     Index: 2

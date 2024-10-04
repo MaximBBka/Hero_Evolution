@@ -1,7 +1,7 @@
 {
-    "idSave": 78,
+    "idSave": 398,
     "isFirstSession": false,
-    "language": "en",
+    "language": "ru",
     "promptDone": false,
     "money": 1,
     "newPlayerName": "Hello!",
@@ -11,14 +11,24 @@
         false
     ],
     "BaseHeroes": [
-        5,
-        3,
-        3,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
+        2,
         2,
         1,
         1,
-        1
+        1,
+        1,
+        2,
+        2,
+        2
     ],
-    "Strong": 5,
-    "TotalBattle": 1
+    "Strong": 11,
+    "Money": 291,
+    "MaxStrong": 11,
+    "TotalBattle": 0
 }

@@ -60,6 +60,7 @@ namespace Game
                     newUnit.transform.position = hero.transform.position;
                     _windowBook.ShowCharacter(i + 1);
                     HeroSubcribe(newUnit);
+                    Save();
                     // SetHero();
                 }
             }
@@ -80,6 +81,7 @@ namespace Game
                 Vector3 vector = new Vector3(hero.transform.position.x, hero.transform.position.y, hero.transform.position.z);
                 vector.z = _manager.SetLayer(hero.transform.position.y) + Random.Range(0.0001f, 0.1111f);
                 hero.transform.position = vector;
+                Save();
                 //SetHero();
             }
         }

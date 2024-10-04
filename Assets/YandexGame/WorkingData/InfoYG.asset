@@ -131,7 +131,7 @@ MonoBehaviour:
     thisPlayer:
       rank: 0
       score: 0
-  - technoName: time
+  - technoName: LiderBoardStrong
     entries: 'Test LeaderBoard
 
       Name: time
@@ -172,6 +172,36 @@ MonoBehaviour:
       score: 127000
       photo: https://justplaygames.ru/public/icon_player.png
       uniqueID: 000
+    - rank: 6
+      name: Player6
+      score: 340000
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player6
+      score: 340000
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player6
+      score: 340000
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player6
+      score: 340000
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player6
+      score: 340000
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
+    - rank: 6
+      name: Player6
+      score: 340000
+      photo: https://justplaygames.ru/public/icon_player.png
+      uniqueID: 321
     - rank: 6
       name: Player6
       score: 340000
@@ -294,8 +324,8 @@ MonoBehaviour:
   metricaEnable: 0
   metricaCounterID: 0
   debug: 1
-  archivingBuild: 1
-  logoImageFormat: 1
+  archivingBuild: 0
+  logoImageFormat: 0
   backgroundImageFormat: 3
   pixelRatioEnable: 0
   pixelRatioValue: 1

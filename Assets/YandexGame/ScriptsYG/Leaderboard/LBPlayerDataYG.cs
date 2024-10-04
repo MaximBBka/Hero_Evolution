@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 #if YG_TEXT_MESH_PRO
@@ -13,11 +14,16 @@ namespace YG
         public ImageLoadYG imageLoad;
         public MonoBehaviour[] topPlayerActivityComponents = new MonoBehaviour[0];
         public MonoBehaviour[] thisPlayerActivityComponents = new MonoBehaviour[0];
+        public Image Rank;
+        public Image Photo;
+        public Image Name;
+        public Image Score;
 
+        
         [Serializable]
         public struct TextLegasy
         {
-            public Text rank, name, score;
+            public TextMeshProUGUI rank, name, score;
         }
         public TextLegasy textLegasy;
 
@@ -41,9 +47,9 @@ namespace YG
             public Sprite photoSprite;
         }
 
-        [HideInInspector]
+        
         public Data data = new Data();
-
+        
 
         [ContextMenu(nameof(UpdateEntries))]
         public void UpdateEntries()
@@ -102,7 +108,15 @@ namespace YG
                 for (int i = 0; i < objects.Length; i++)
                 {
                     objects[i].enabled = activity;
+                    Start();
                 }
+            }
+            void Start()
+            {
+                Rank.enabled = true;
+                Name.enabled = true;
+                Score.enabled = true;
+                Photo.enabled = true;
             }
         }
     }

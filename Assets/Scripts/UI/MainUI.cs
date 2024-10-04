@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using YG;
 
@@ -13,28 +14,45 @@ namespace Game
         [field: SerializeField] public int _totalStrong { get; private set; }
         [field: SerializeField] public Slider _upMoney { get; private set; }
 
-        
+
 
         [SerializeField] private TextMeshProUGUI _textMoney;
         [SerializeField] private TextMeshProUGUI _textStrong;
+        [SerializeField] private LeaderboardYG leaderboardYG;
 
 
         private int _totalUpMoney = 4;
         private float _speedSliderDown = 0.1f;
+        private int _maxStrong;
 
-        public int MultiplyMoney;
+        public int MultiplyMoney = 1;
         public Image ImagePrice;
         public Image ImageAds;
         public TextMeshProUGUI TextPrice;
-
+        private void Load()
+        {
+            YandexGame.LoadProgress();
+            _totalStrong = YandexGame.savesData.Strong;
+            _maxStrong = YandexGame.savesData.MaxStrong;
+            _money = YandexGame.savesData.Money;
+            UpdateInfo();
+        }
         private void Save()
         {
-            YandexGame.savesData.Strong = _totalStrong;
+            YandexGame.savesData.Strong = _totalStrong;            
+            YandexGame.savesData.Money = _money;            
+            if (_maxStrong < _totalStrong)
+            {
+                _maxStrong = _totalStrong;
+                YandexGame.savesData.MaxStrong = _maxStrong;
+                AddLeaderBoard(_maxStrong);
+            }
             YandexGame.SaveProgress();
         }
-        
+
         private void Start()
         {
+            Load();
             StartCoroutine(SliderDown());
         }
 
@@ -46,6 +64,12 @@ namespace Game
         public void UpdateStrong(int strong)
         {
             _totalStrong = strong;
+            _textStrong.SetText($"{_totalStrong}");
+            Save();
+        }
+        public void UpdateInfo()
+        {
+            _textMoney.SetText($"{_money}");
             _textStrong.SetText($"{_totalStrong}");
         }
         public void UpMoney()
@@ -76,6 +100,13 @@ namespace Game
 
                 }
             }
+        }
+
+        public void AddLeaderBoard(int total)
+        {
+            YandexGame.NewLeaderboardScores("LiderBoardStrong", total);
+            leaderboardYG.NewScore(total);
+            leaderboardYG.UpdateLB();
         }
         private void OnDestroy()
         {
