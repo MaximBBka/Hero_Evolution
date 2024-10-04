@@ -1,7 +1,9 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 
 namespace Game
 {
@@ -25,6 +27,12 @@ namespace Game
         public Image ImageAds;
         public TextMeshProUGUI TextPrice;
 
+        private void Save()
+        {
+            YandexGame.savesData.Strong = _totalStrong;
+            YandexGame.SaveProgress();
+        }
+        
         private void Start()
         {
             StartCoroutine(SliderDown());
@@ -68,6 +76,10 @@ namespace Game
 
                 }
             }
+        }
+        private void OnDestroy()
+        {
+            Save();
         }
     }
 }

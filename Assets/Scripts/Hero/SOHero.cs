@@ -19,6 +19,8 @@ namespace Game
         public int Strong;
         public int Price;
         public int GetMoney;
+        public int GetRes;
         public int NeedTotalStrong;
+        public int Index;
     }
 }

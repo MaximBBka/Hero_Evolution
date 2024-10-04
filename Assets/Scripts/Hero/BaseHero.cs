@@ -5,29 +5,35 @@ using UnityEngine.EventSystems;
 
 namespace Game
 {
-    public abstract class BaseHero : DragHandler, IMerge, IMoney
+    public abstract class BaseHero : DragHandler, IMerge, IMoney, IRecources
     {
         [field: SerializeField] public ModelHero Model { get; private set; }
+        [field: SerializeField] public SpriteRenderer Render {  get; private set; }
 
         [SerializeField] private Collider2D _collider2D;
-        [SerializeField] private SpriteRenderer _render;
         [SerializeField] private Animator _animator;
         [SerializeField] private LayerManager layerManager;
 
 
         public int MaxIndex;
         public int CurrentIndex;
+        public bool IsBattle = false;
         public event IMerge.CallBackMerge OnMerge;
         public event IMoney.CallbackMoney OnMoneyChange;
         public event IMoney.CallbackUpMoney OnMoneyUp;
+        public event IRecources.CallBackRes OnAddRes;
 
-        public void Init(LayerManager manager, ModelHero model)
+        public void Init(ModelHero model, LayerManager manager = null)
         {
             layerManager = manager;
             Model = model;
         }
         public override void OnMouseDrag()
         {
+            if (IsBattle)
+            {
+                return;
+            }
             base.OnMouseDrag();
             Vector3 vector = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             vector.z = layerManager.SetLayer(transform.position.y) + Random.Range(0.0001f, 0.1111f);
@@ -40,20 +46,30 @@ namespace Game
                 {
                     if (transform.position.y > baseHero.transform.position.y)
                     {
-                        baseHero._render.sortingOrder = 2;
-                        _render.sortingOrder = 1;
+                        baseHero.Render.sortingOrder = 2;
+                        Render.sortingOrder = 1;
                     }
                     else
                     {
-                        baseHero._render.sortingOrder = 1;
-                        _render.sortingOrder = 2;
+                        baseHero.Render.sortingOrder = 1;
+                        Render.sortingOrder = 2;
                     }
                 }
             }
         }
         public override void OnStartDrag()
         {
+            if (IsBattle)
+            {
+                return;
+            }
             base.OnStartDrag();
+            int randomRes = Random.Range(0, 6);
+            Debug.Log($"{randomRes}");
+            if (randomRes == 5)
+            {
+                OnAddRes.Invoke(Model.GetRes, transform);
+            }
             OnMoneyChange.Invoke(Model.GetMoney);
             OnMoneyUp.Invoke();
             _animator.SetTrigger("IsAttack");
@@ -61,6 +77,10 @@ namespace Game
 
         public override void OnEndDrag()
         {
+            if (IsBattle)
+            {
+                return;
+            }
             base.OnEndDrag();
             if (CurrentIndex >= MaxIndex)
             {

@@ -18,7 +18,7 @@ namespace Game
 
         private List<ElementBook> _arrayElement = new List<ElementBook>();
 
-        private void Awake()
+        public void OnStart()
         {
             Filled();
             ShowCharacter(0);

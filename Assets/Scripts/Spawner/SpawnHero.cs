@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 using Zenject;
 
 namespace Game
@@ -12,6 +13,7 @@ namespace Game
 
         private MainUI _mainUI;
         private WindowBook _windowBook;
+        private UIRecources _uiResources;
         private ClassPool _pool;
         private ModelHero _currentModel;
 
@@ -19,19 +21,28 @@ namespace Game
         public int MaxHero;
 
         [Inject]
-        public void Construct(MainUI ui, WindowBook window)
+        public void Construct(MainUI ui, WindowBook window, UIRecources recources, ClassPool pool)
         {
             _mainUI = ui;
             _windowBook = window;
+            _uiResources = recources;
+            _pool = pool;
         }
 
         public void Start()
         {
+            _windowBook.OnStart();
             _currentModel = sOHero.ModelHeroes[0];
-           // SetHero();
-            _pool = new ClassPool(1);
+            //Load();
+            // SetHero();
         }
 
+        //public void Load()
+        //{
+        //    YandexGame.LoadProgress();
+        //    _listHero = YandexGame.savesData.BaseHeroes;
+
+        //}
         private void MergeUnit(BaseHero hero, BaseHero baseHero)
         {
             MonoPool mono = _pool.Get(hero);
@@ -45,11 +56,11 @@ namespace Game
                 {
                     MonoPool newMono = _pool.Get(sOHero.ModelHeroes[i + 1].Prefab, _spawnPool);
                     BaseHero newUnit = newMono.Get() as BaseHero;
-                    newUnit.Init(_manager, sOHero.ModelHeroes[i + 1]);
+                    newUnit.Init(sOHero.ModelHeroes[i + 1], _manager);
                     newUnit.transform.position = hero.transform.position;
                     _windowBook.ShowCharacter(i + 1);
                     HeroSubcribe(newUnit);
-                   // SetHero();
+                    // SetHero();
                 }
             }
         }
@@ -63,7 +74,7 @@ namespace Game
                 MonoPool mono = _pool.Get(_currentModel.Prefab, _spawnPool);
                 BaseHero hero = mono.Get() as BaseHero;
                 hero.transform.position = spawnPos;
-                hero.Init(_manager, _currentModel);
+                hero.Init(_currentModel, _manager);
                 HeroSubcribe(hero);
 
                 Vector3 vector = new Vector3(hero.transform.position.x, hero.transform.position.y, hero.transform.position.z);
@@ -76,7 +87,7 @@ namespace Game
         {
             for (int i = sOHero.ModelHeroes.Length - 1; i >= 0; i--)
             {
-                if(_mainUI._totalStrong >= sOHero.ModelHeroes[i].NeedTotalStrong)
+                if (_mainUI._totalStrong >= sOHero.ModelHeroes[i].NeedTotalStrong)
                 {
                     BaseHero currentModel = _currentModel.Prefab;
                     _currentModel = sOHero.ModelHeroes[i];
@@ -84,19 +95,34 @@ namespace Game
                     Replace(currentModel, sOHero.ModelHeroes[i].Prefab);
                     _mainUI.ImagePrice.sprite = _currentModel.Image;
                     _mainUI.TextPrice.SetText($"{_currentModel.Price}");
-                    if(_currentModel.GetType() == sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 1].GetType())
+                    if (_currentModel.GetType() == sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 1].GetType())
                     {
                         _mainUI.ImageAds.sprite = _currentModel.Image;
-                    }else if(_currentModel.GetType() == sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 2].GetType())
+                    }
+                    else if (_currentModel.GetType() == sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 2].GetType())
                     {
                         _mainUI.ImageAds.sprite = sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 1].Image;
-                    }else
+                    }
+                    else
                     {
                         _mainUI.ImageAds.sprite = sOHero.ModelHeroes[i + 2].Image;
                     }
                     return;
-                }         
+                }
             }
+        }
+        private void OnDestroy()
+        {
+            Save();
+        }
+        private void Save()
+        {
+            YandexGame.savesData.BaseHeroes.Clear();
+            for (int i = 0; i < _listHero.Count; i++)
+            {
+                YandexGame.savesData.BaseHeroes.Add(_listHero[i].CurrentIndex);
+            }      
+            YandexGame.SaveProgress();
         }
 
         private void HeroSubcribe(BaseHero hero)
@@ -104,6 +130,7 @@ namespace Game
             hero.OnMerge += MergeUnit;
             hero.OnMoneyChange += _mainUI.AddMoney;
             hero.OnMoneyUp += _mainUI.UpMoney;
+            hero.OnAddRes += _uiResources.AddRes;
             _listHero.Add(hero);
             CalculateStrong();
         }
@@ -112,6 +139,7 @@ namespace Game
             hero.OnMerge -= MergeUnit;
             hero.OnMoneyChange -= _mainUI.AddMoney;
             hero.OnMoneyUp -= _mainUI.UpMoney;
+            hero.OnAddRes -= _uiResources.AddRes;
             _listHero.Remove(hero);
         }
         private void CalculateStrong()
@@ -126,15 +154,15 @@ namespace Game
 
         private void Replace(BaseHero currentHero, BaseHero nextHero)
         {
-            if(currentHero == null) 
+            if (currentHero == null)
             {
-                return; 
+                return;
             }
             MonoPool mono = _pool.Get(currentHero);
             List<Vector3> vector3 = new List<Vector3>(mono.Objects.Count);
             for (int i = 0; i < mono.Objects.Count; i++)
             {
-                if (mono.Objects[i].gameObject.activeSelf) 
+                if (mono.Objects[i].gameObject.activeSelf)
                 {
                     vector3.Add(mono.Objects[i].transform.position);
                     HeroUnSubcribe(mono.Objects[i] as BaseHero);
@@ -148,7 +176,7 @@ namespace Game
             {
                 BaseHero hero = mono.Get() as BaseHero;
                 hero.transform.position = vector3[i];
-                hero.Init(_manager, _currentModel);
+                hero.Init(_currentModel, _manager);
                 HeroSubcribe(hero);
             }
         }

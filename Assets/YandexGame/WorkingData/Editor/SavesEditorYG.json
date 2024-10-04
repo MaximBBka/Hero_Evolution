@@ -1,0 +1,24 @@
+{
+    "idSave": 78,
+    "isFirstSession": false,
+    "language": "en",
+    "promptDone": false,
+    "money": 1,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "BaseHeroes": [
+        5,
+        3,
+        3,
+        2,
+        1,
+        1,
+        1
+    ],
+    "Strong": 5,
+    "TotalBattle": 1
+}

@@ -107,13 +107,16 @@ MonoBehaviour:
     Strong: 0
     Price: 0
     GetMoney: 0
+    GetRes: 0
     NeedTotalStrong: 0
+    Index: 0
+  <Render>k__BackingField: {fileID: 6565389678821887683}
   _collider2D: {fileID: 2074080008724929430}
-  _render: {fileID: 6565389678821887683}
   _animator: {fileID: 4960885572912743083}
   layerManager: {fileID: 0}
   MaxIndex: 40
   CurrentIndex: 29
+  IsBattle: 0
 --- !u!95 &4960885572912743083
 Animator:
   serializedVersion: 5
