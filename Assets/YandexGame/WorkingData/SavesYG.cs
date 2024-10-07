@@ -1,5 +1,6 @@
 ﻿using Game;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace YG
 {
@@ -20,10 +21,18 @@ namespace YG
 
         // Ваши сохранения
         public List<int> BaseHeroes = new List<int>();
+        public List<int> ElementBookOpen = new List<int>();
+        public int[] TotalRes = new int[3];
         public int Strong;
-        public int Money;
+        public int Money = 40;
         public int MaxStrong;
         public int TotalBattle;
+        public int BattleWin = 2;
+        public int IndexOpenHero;
+        public int LevelStrong;
+        public int TotalSpawnUnits;
+        public Sprite CurrentSpawn;
+        public Sprite AdsSpawn;
         // ...
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны

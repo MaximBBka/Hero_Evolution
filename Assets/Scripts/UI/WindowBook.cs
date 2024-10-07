@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 namespace Game
 {
@@ -34,6 +36,7 @@ namespace Game
                 element.Index = i;
                 _arrayElement.Add(element);
             }
+            Load();
         }
 
         public void UpdateCharacterInfo(int index)
@@ -48,6 +51,11 @@ namespace Game
         {
             _arrayElement[index].IsVisibale = true;
             _arrayElement[index].ImageCharacter.color = Color.white;
+            if (!YandexGame.savesData.ElementBookOpen.Contains(index))
+            {
+                YandexGame.savesData.ElementBookOpen.Add(index);
+                YandexGame.SaveProgress();
+            }
         }
 
         private void OnEnable()
@@ -69,6 +77,17 @@ namespace Game
             for (int i = 0; i < _arrayElement.Count; i++)
             {
                 Destroy(_arrayElement[i].gameObject);
+            }
+        }
+        private void Load()
+        {
+            YandexGame.LoadProgress();
+            List<int> temp = YandexGame.savesData.ElementBookOpen;
+
+            for (int i = 0; i < temp.Count; i++)
+            {
+                _arrayElement[temp[i]].IsVisibale = true;
+                _arrayElement[temp[i]].ImageCharacter.color = Color.white;
             }
         }
     }

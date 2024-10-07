@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,12 +12,21 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _textName;
         [SerializeField] private TextMeshProUGUI _textTimer;
 
+        private MainUI _mainUI;
+        private SpawnHero _spawnHero;
+
+
+        [Inject]
+        public void Construct(MainUI ui)
+        {
+            _mainUI = ui;
+        }
         private float _timer = 180;
         private void Start()
         {
             StartCoroutine(Timer());
         }
-        
+
         public IEnumerator Timer()
         {
             while (_timer > 0)
@@ -27,9 +35,11 @@ namespace Game
                 _timer -= 1;
                 yield return new WaitForSeconds(1f);
             }
-            _panel.gameObject.SetActive(true);
-            _timer = 180;
-        }
+            if (_spawnHero._listHero.Count > 0)
+            {
+                _panel.gameObject.SetActive(true);
+            }
+            _timer = 180;        }
         public string Convert(int time)
         {
             int minutes = (int)((time % 3600) / 60);
@@ -46,6 +56,9 @@ namespace Game
         {
             StartCoroutine(Timer());
             _panel.gameObject.SetActive(false);
+            int tempMoney = (_mainUI._money * 40) / 100;
+            _mainUI.AddMoney(-tempMoney);
+            _mainUI.AddStrong(-5);
         }
     }
 }

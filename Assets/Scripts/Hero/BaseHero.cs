@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Game
 {
-    public abstract class BaseHero : DragHandler, IMerge, IMoney, IRecources
+    public abstract class BaseHero : DragHandler, IMerge, IMoney, IRecources, IDamage, IDeath
     {
         [field: SerializeField] public ModelHero Model { get; private set; }
-        [field: SerializeField] public SpriteRenderer Render {  get; private set; }
-
+        [field: SerializeField] public SpriteRenderer Render { get; private set; }
+        [field: SerializeField] public Transform _health { get; private set; }
+        [field: SerializeField] public TextMeshProUGUI _textHelth {  get; private set; }
+        
         [SerializeField] private Collider2D _collider2D;
         [SerializeField] private Animator _animator;
         [SerializeField] private LayerManager layerManager;
 
+        private int countclick = 0;
 
         public int MaxIndex;
         public int CurrentIndex;
@@ -22,6 +26,8 @@ namespace Game
         public event IMoney.CallbackMoney OnMoneyChange;
         public event IMoney.CallbackUpMoney OnMoneyUp;
         public event IRecources.CallBackRes OnAddRes;
+        public event IDeath.CallBackDeath OnDeath;
+        public Animator Animator => _animator;
 
         public void Init(ModelHero model, LayerManager manager = null)
         {
@@ -68,11 +74,17 @@ namespace Game
             Debug.Log($"{randomRes}");
             if (randomRes == 5)
             {
-                OnAddRes.Invoke(Model.GetRes, transform);
+                OnAddRes.Invoke(Model.GetRes, transform);              
             }
             OnMoneyChange.Invoke(Model.GetMoney);
             OnMoneyUp.Invoke();
             _animator.SetTrigger("IsAttack");
+            countclick++;
+            if (countclick == 5)
+            {
+                AudioManager.Instance.Sound.PlayOneShot(AudioManager.Instance.ClickHero[Random.Range(0, AudioManager.Instance.ClickHero.Length - 1 + 1)]);
+                countclick = 0;
+            }
         }
 
         public override void OnEndDrag()
@@ -95,7 +107,7 @@ namespace Game
 
         private BaseHero SearchUnit()
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 4);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i] != _collider2D && colliders[i].TryGetComponent<BaseHero>(out BaseHero baseHero))
@@ -109,6 +121,20 @@ namespace Game
         {
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(transform.position, transform.localScale.x / 2);
+        }
+
+        public void Damage(float damage)
+        {
+            ModelHero modelHero = Model;
+            modelHero.Heath -= damage;
+            modelHero.Heath = Mathf.Clamp(modelHero.Heath, 0f, float.MaxValue);
+            Model = modelHero;
+            _textHelth.SetText($"{Model.Heath}");
+            if (Model.Heath <= 0f)
+            {
+                OnDeath?.Invoke(this);
+                _animator.SetTrigger("IsDie");
+            }
         }
     }
 }

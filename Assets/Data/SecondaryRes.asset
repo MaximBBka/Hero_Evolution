@@ -14,17 +14,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _modelRecource:
   - Level: 1
-    Price: 3
-    BonusStrong: 5
-  - Level: 2
-    Price: 6
-    BonusStrong: 10
-  - Level: 3
-    Price: 12
+    Price: 4
     BonusStrong: 20
-  - Level: 4
-    Price: 24
+  - Level: 2
+    Price: 8
     BonusStrong: 40
-  - Level: 5
-    Price: 48
+  - Level: 3
+    Price: 16
     BonusStrong: 80
+  - Level: 4
+    Price: 19
+    BonusStrong: 100
+  - Level: 5
+    Price: 24
+    BonusStrong: 150
+  - Level: 6
+    Price: 34
+    BonusStrong: 250
+  - Level: 7
+    Price: 39
+    BonusStrong: 350
+  - Level: 8
+    Price: 44
+    BonusStrong: 450
+  - Level: 9
+    Price: 49
+    BonusStrong: 550
+  - Level: 10
+    Price: 54
+    BonusStrong: 650
+  - Level: 11
+    Price: 59
+    BonusStrong: 750
+  - Level: 12
+    Price: 64
+    BonusStrong: 850
+  - Level: 13
+    Price: 69
+    BonusStrong: 950
+  - Level: 14
+    Price: 74
+    BonusStrong: 1050
+  - Level: 15
+    Price: 79
+    BonusStrong: 1150
+  - Level: 16
+    Price: 84
+    BonusStrong: 1250
+  - Level: 17
+    Price: 89
+    BonusStrong: 1350
+  - Level: 18
+    Price: 99
+    BonusStrong: 1450
+  - Level: 19
+    Price: 109
+    BonusStrong: 1550
+  - Level: 20
+    Price: 119
+    BonusStrong: 1650
+  - Level: 21
+    Price: 129
+    BonusStrong: 1750
+  - Level: 22
+    Price: 139
+    BonusStrong: 1850
+  - Level: 23
+    Price: 149
+    BonusStrong: 1950
+  - Level: 24
+    Price: 159
+    BonusStrong: 2050
+  - Level: 25
+    Price: 169
+    BonusStrong: 2150
+  - Level: 26
+    Price: 179
+    BonusStrong: 2250
+  - Level: 27
+    Price: 189
+    BonusStrong: 2350
+  - Level: 28
+    Price: 199
+    BonusStrong: 2450
+  - Level: 29
+    Price: 209
+    BonusStrong: 2550
+  - Level: 30
+    Price: 219
+    BonusStrong: 2650

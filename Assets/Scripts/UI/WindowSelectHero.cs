@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -24,6 +24,7 @@ namespace Game
         {
             Load();
             Filled();
+            UpdateText();
         }
         public void Load()
         {
@@ -90,7 +91,19 @@ namespace Game
         }
         private void UpdateText()
         {
-            _textSelected.SetText($"Âûáðàíî {temp}/5");
+            if (YandexGame.EnvironmentData.language == "ru")
+            {
+                _textSelected.SetText($"Ð’Ñ‹Ð±Ñ€Ð°Ð½Ð¾ {temp}/5");
+            }
+            else if (YandexGame.EnvironmentData.language == "en")
+            {
+                _textSelected.SetText($"Selected {temp}/5");
+            }
+            else if (YandexGame.EnvironmentData.language == "tr")
+            {
+                _textSelected.SetText($"SeÃ§me {temp}/5");
+            }
+            
             if(temp > 0)
             {
                 _buttonPlay.gameObject.SetActive(true );

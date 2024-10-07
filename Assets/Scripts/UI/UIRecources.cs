@@ -2,6 +2,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 using Zenject;
 
 namespace Game
@@ -20,6 +21,7 @@ namespace Game
         private MainUI _mainUI;
         private int _currentLevel = 0;
         private bool IsUpgrade;
+        private Sequence sequence;
 
         [Inject]
         public void Construct(MainUI ui, ClassPool pool)
@@ -29,11 +31,13 @@ namespace Game
         }
 
         private void Start()
-        {           
+        {
+            Load();
             UpgradeStrong();
         }
         public void UpgradeStrong()
         {
+            Save();
             for (int i = 0; i < CountRes.Length; i++)
             {
                 if (_sOResources.ModelResources[i].sOResource._modelRecource[_currentLevel].Price >= CountRes[i])
@@ -50,22 +54,31 @@ namespace Game
             _button.color = Color.white;
             IsUpgrade = true;
         }
-        public void AddRes(int total, Transform pos)
+        public void AddRes(int total, Transform pos = null)
         {
             int randomRes = Random.Range(0, 3);
             CountRes[randomRes] += total;
             _textRes[randomRes].SetText($"{CountRes[randomRes]}");
-            for (int i = 0;i < total; i++)
+            if (pos != null)
             {
-                MonoPool newMono = _pool.Get(_prefabRes[randomRes], _spawnPos);
-                BaseResource res = newMono.Get() as BaseResource;
-                res.transform.position = pos.position;
-                DOTween.Sequence()
-                    .Append(res.transform.DOMove(new Vector3(res.transform.position.x + Random.Range(-3, 3), res.transform.position.y + Random.Range(-3, 3), 0), 1f))
-                    .Append(res.SpriteRenderer.DOFade(0, 1f))
-                    .AppendCallback(() => { newMono.PutAway(res); });
+                for (int i = 0; i < total; i++)
+                {
+                    MonoPool newMono = _pool.Get(_prefabRes[randomRes], _spawnPos);
+                    BaseResource res = newMono.Get() as BaseResource;
+                    res.transform.position = pos.position;
+
+                    sequence = DOTween.Sequence()
+                        .Append(res.transform.DOMove(new Vector3(res.transform.position.x + Random.Range(-3, 3), res.transform.position.y + Random.Range(-3, 3), 0), 1f))
+                        .Append(res.SpriteRenderer?.DOFade(0, 1f))
+                        .SetLink(res.gameObject)
+                        .AppendCallback(() => { newMono.PutAway(res); });
+                    UpgradeStrong();
+                }
+            }
+            else
+            {
                 UpgradeStrong();
-            }           
+            }
         }
 
         public void UpStrong()
@@ -77,9 +90,36 @@ namespace Game
                     CountRes[i] -= _sOResources.ModelResources[i].sOResource._modelRecource[_currentLevel].Price;
                     _textRes[i].SetText($"{CountRes[i]}");
                 }
-                _mainUI.UpdateStrong(_sOResources.ModelResources[0].sOResource._modelRecource[_currentLevel].BonusStrong);
+                _mainUI.AddStrong(_sOResources.ModelResources[0].sOResource._modelRecource[_currentLevel].BonusStrong);
                 _currentLevel++;
                 UpgradeStrong();
+            }
+        }
+
+        public void AddRandomRes()
+        {
+            AddRes(Random.Range(_sOResources.ModelResources[0].sOResource._modelRecource[_currentLevel].RandomResAds[0], _sOResources.ModelResources[0].sOResource._modelRecource[_currentLevel].RandomResAds.Length - 1 + 1));
+        }
+
+        private void OnDestroy()
+        {
+            sequence?.Kill();
+        }
+        public void Save()
+        {
+            YandexGame.savesData.TotalRes = CountRes;
+            YandexGame.savesData.LevelStrong = _currentLevel;
+            YandexGame.SaveProgress();
+        }
+        public void Load()
+        {
+            YandexGame.LoadProgress();
+            CountRes = YandexGame.savesData.TotalRes;
+            _currentLevel = YandexGame.savesData.LevelStrong;
+            for (int i = 0; i < CountRes.Length; i++)
+            {
+
+                _textRes[i].SetText($"{CountRes[i]}");
             }
         }
     }

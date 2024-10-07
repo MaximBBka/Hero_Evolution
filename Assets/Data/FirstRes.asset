@@ -15,16 +15,121 @@ MonoBehaviour:
   _modelRecource:
   - Level: 1
     Price: 5
-    BonusStrong: 5
+    BonusStrong: 20
+    RandomResAds: 050000000a000000
   - Level: 2
     Price: 10
-    BonusStrong: 10
-  - Level: 3
-    Price: 20
-    BonusStrong: 20
-  - Level: 4
-    Price: 40
     BonusStrong: 40
-  - Level: 5
-    Price: 80
+    RandomResAds: 070000000d000000
+  - Level: 3
+    Price: 15
     BonusStrong: 80
+    RandomResAds: 0a0000000f000000
+  - Level: 4
+    Price: 20
+    BonusStrong: 100
+    RandomResAds: 0f00000013000000
+  - Level: 5
+    Price: 25
+    BonusStrong: 150
+    RandomResAds: 1300000018000000
+  - Level: 6
+    Price: 35
+    BonusStrong: 250
+    RandomResAds: 180000001f000000
+  - Level: 7
+    Price: 40
+    BonusStrong: 350
+    RandomResAds: 1f00000026000000
+  - Level: 8
+    Price: 45
+    BonusStrong: 450
+    RandomResAds: 260000002b000000
+  - Level: 9
+    Price: 50
+    BonusStrong: 550
+    RandomResAds: 2b00000030000000
+  - Level: 10
+    Price: 55
+    BonusStrong: 650
+    RandomResAds: 3000000034000000
+  - Level: 11
+    Price: 60
+    BonusStrong: 750
+    RandomResAds: 340000003a000000
+  - Level: 12
+    Price: 65
+    BonusStrong: 850
+    RandomResAds: 3a0000003f000000
+  - Level: 13
+    Price: 70
+    BonusStrong: 950
+    RandomResAds: 3f00000044000000
+  - Level: 14
+    Price: 75
+    BonusStrong: 1050
+    RandomResAds: 4400000049000000
+  - Level: 15
+    Price: 80
+    BonusStrong: 1150
+    RandomResAds: 490000004e000000
+  - Level: 16
+    Price: 85
+    BonusStrong: 1250
+    RandomResAds: 4e00000053000000
+  - Level: 17
+    Price: 90
+    BonusStrong: 1350
+    RandomResAds: 5300000058000000
+  - Level: 18
+    Price: 100
+    BonusStrong: 1450
+    RandomResAds: 580000005f000000
+  - Level: 19
+    Price: 110
+    BonusStrong: 1550
+    RandomResAds: 5f00000069000000
+  - Level: 20
+    Price: 120
+    BonusStrong: 1650
+    RandomResAds: 6900000073000000
+  - Level: 21
+    Price: 130
+    BonusStrong: 1750
+    RandomResAds: 730000007d000000
+  - Level: 22
+    Price: 140
+    BonusStrong: 1850
+    RandomResAds: 7d00000087000000
+  - Level: 23
+    Price: 150
+    BonusStrong: 1950
+    RandomResAds: 8700000091000000
+  - Level: 24
+    Price: 160
+    BonusStrong: 2050
+    RandomResAds: 910000009b000000
+  - Level: 25
+    Price: 170
+    BonusStrong: 2150
+    RandomResAds: 9b000000a5000000
+  - Level: 26
+    Price: 180
+    BonusStrong: 2250
+    RandomResAds: a5000000af000000
+  - Level: 27
+    Price: 190
+    BonusStrong: 2350
+    RandomResAds: af000000b9000000
+  - Level: 28
+    Price: 200
+    BonusStrong: 2450
+    RandomResAds: b9000000c3000000
+  - Level: 29
+    Price: 210
+    BonusStrong: 2550
+    RandomResAds: c3000000cd000000
+  - Level: 30
+    Price: 220
+    BonusStrong: 2650
+    RandomResAds: cd000000d7000000

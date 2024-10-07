@@ -15,5 +15,6 @@ namespace Game
         public int Level;
         public int Price;
         public int BonusStrong;
+        public int[] RandomResAds;
     }
 }

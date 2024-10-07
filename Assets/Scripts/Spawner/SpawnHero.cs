@@ -7,42 +7,74 @@ namespace Game
 {
     public class SpawnHero : MonoBehaviour
     {
+        [field: SerializeField] public List<BaseHero> _listHero {  get; private set; }
         [SerializeField] private LayerManager _manager;
         [SerializeField] private Transform _spawnPool;
-        [SerializeField] List<BaseHero> _listHero;
 
         private MainUI _mainUI;
         private WindowBook _windowBook;
         private UIRecources _uiResources;
+        private WindowOpenHero _windowOpenHero;
         private ClassPool _pool;
         private ModelHero _currentModel;
+        private ModelHero _AdsModel;
 
         public SOHero sOHero;
         public int MaxHero;
 
+        private int _totalSpawnUnit;
+        private Sprite _currentSpawn;
+        private Sprite _adsSpawn;
+
         [Inject]
-        public void Construct(MainUI ui, WindowBook window, UIRecources recources, ClassPool pool)
+        public void Construct(MainUI ui, WindowBook window, UIRecources recources, ClassPool pool, WindowOpenHero openHero)
         {
             _mainUI = ui;
             _windowBook = window;
             _uiResources = recources;
             _pool = pool;
+            _windowOpenHero = openHero;
         }
-
-        public void Start()
+        public void Awake()
         {
+            Load();
+        }
+        private void Start()
+        {
+            StartSpawn();
+            SetHero();
             _windowBook.OnStart();
-            _currentModel = sOHero.ModelHeroes[0];
-            //Load();
-            // SetHero();
         }
 
-        //public void Load()
-        //{
-        //    YandexGame.LoadProgress();
-        //    _listHero = YandexGame.savesData.BaseHeroes;
-
-        //}
+        private void Load()
+        {
+            YandexGame.LoadProgress();
+            _totalSpawnUnit = YandexGame.savesData.TotalSpawnUnits;
+            _currentSpawn = YandexGame.savesData.CurrentSpawn;
+            _adsSpawn = YandexGame.savesData.AdsSpawn;
+            int index = YandexGame.savesData.BaseHeroes.Count;
+            for (int i = 0; i < index; i++)
+            {
+                int temp = YandexGame.savesData.BaseHeroes[i];
+                _listHero.Add(sOHero.ModelHeroes[temp - 1].Prefab);
+            }
+        }
+        private void StartSpawn()
+        {
+            for (int i = 0; i < _listHero.Count; i++)
+            {
+                Vector3 spawnPos = new Vector3(Random.Range(-8.3f, 5.5f), Random.Range(3f, -1.8f), 0);
+                MonoPool mono = _pool.Get(_listHero[i], _spawnPool);
+                BaseHero hero = mono.Get() as BaseHero;
+                hero.transform.position = spawnPos;
+                hero.Init(sOHero.ModelHeroes[YandexGame.savesData.BaseHeroes[i] - 1], _manager);
+                hero.OnMerge += MergeUnit;
+                hero.OnMoneyChange += _mainUI.AddMoneyMultiply;
+                hero.OnMoneyUp += _mainUI.UpMoney;
+                hero.OnAddRes += _uiResources.AddRes;
+                SetLayer(hero);
+            }
+        }
         private void MergeUnit(BaseHero hero, BaseHero baseHero)
         {
             MonoPool mono = _pool.Get(hero);
@@ -54,14 +86,22 @@ namespace Game
             {
                 if (hero.GetType() == sOHero.ModelHeroes[i].Prefab.GetType())
                 {
+                    AudioManager.Instance.Sound.PlayOneShot(AudioManager.Instance.Merge[Random.Range(0, AudioManager.Instance.Merge.Length - 1 + 1)]);
                     MonoPool newMono = _pool.Get(sOHero.ModelHeroes[i + 1].Prefab, _spawnPool);
                     BaseHero newUnit = newMono.Get() as BaseHero;
                     newUnit.Init(sOHero.ModelHeroes[i + 1], _manager);
                     newUnit.transform.position = hero.transform.position;
                     _windowBook.ShowCharacter(i + 1);
+                    if(newUnit.CurrentIndex > _windowOpenHero.IndexOpen)
+                    {
+                        _windowOpenHero.StartOpen(newUnit.Model.Image);
+                        _windowOpenHero.IndexOpen = newUnit.CurrentIndex;
+                    }
                     HeroSubcribe(newUnit);
+                    _totalSpawnUnit++;
                     Save();
-                    // SetHero();
+                    SetHero();
+                    return;
                 }
             }
         }
@@ -77,37 +117,51 @@ namespace Game
                 hero.transform.position = spawnPos;
                 hero.Init(_currentModel, _manager);
                 HeroSubcribe(hero);
-
-                Vector3 vector = new Vector3(hero.transform.position.x, hero.transform.position.y, hero.transform.position.z);
-                vector.z = _manager.SetLayer(hero.transform.position.y) + Random.Range(0.0001f, 0.1111f);
-                hero.transform.position = vector;
+                SetLayer(hero);
                 Save();
-                //SetHero();
+                SetHero();
+                _totalSpawnUnit++;
             }
         }
         public void SetHero()
         {
             for (int i = sOHero.ModelHeroes.Length - 1; i >= 0; i--)
             {
-                if (_mainUI._totalStrong >= sOHero.ModelHeroes[i].NeedTotalStrong)
+                if (_totalSpawnUnit >= sOHero.ModelHeroes[i].SpawnTotal)
                 {
                     BaseHero currentModel = _currentModel.Prefab;
                     _currentModel = sOHero.ModelHeroes[i];
                     if (currentModel == _currentModel.Prefab) return;
                     Replace(currentModel, sOHero.ModelHeroes[i].Prefab);
                     _mainUI.ImagePrice.sprite = _currentModel.Image;
-                    _mainUI.TextPrice.SetText($"{_currentModel.Price}");
-                    if (_currentModel.GetType() == sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 1].GetType())
+                    _currentSpawn = _currentModel.Image;
+                    if (_currentModel.Price > 1000)
+                    {
+                        int thousands = _currentModel.Price / 1000;
+                        int hundreds = (_currentModel.Price % 1000) / 100;
+                        _mainUI.TextPrice.text = $"{thousands}.{hundreds}K";
+                    }
+                    else
+                    {
+                        _mainUI.TextPrice.text = $"{_currentModel.Price}";
+                    }
+                    if (_currentModel.Prefab == sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 1].Prefab)
                     {
                         _mainUI.ImageAds.sprite = _currentModel.Image;
+                        _AdsModel = _currentModel;
+                        _adsSpawn = _currentModel.Image;
                     }
-                    else if (_currentModel.GetType() == sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 2].GetType())
+                    else if (_currentModel.Prefab == sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 2].Prefab)
                     {
                         _mainUI.ImageAds.sprite = sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 1].Image;
+                        _adsSpawn = sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 1].Image;
+                        _AdsModel = sOHero.ModelHeroes[sOHero.ModelHeroes.Length - 1];
                     }
                     else
                     {
                         _mainUI.ImageAds.sprite = sOHero.ModelHeroes[i + 2].Image;
+                        _adsSpawn = sOHero.ModelHeroes[i + 2].Image;
+                        _AdsModel = sOHero.ModelHeroes[i + 2];
                     }
                     return;
                 }
@@ -123,35 +177,30 @@ namespace Game
             for (int i = 0; i < _listHero.Count; i++)
             {
                 YandexGame.savesData.BaseHeroes.Add(_listHero[i].CurrentIndex);
-            }      
+            }
+            YandexGame.savesData.TotalSpawnUnits = _totalSpawnUnit;
+            YandexGame.savesData.CurrentSpawn = _currentSpawn;
+            YandexGame.savesData.AdsSpawn = _adsSpawn;
             YandexGame.SaveProgress();
         }
 
         private void HeroSubcribe(BaseHero hero)
         {
             hero.OnMerge += MergeUnit;
-            hero.OnMoneyChange += _mainUI.AddMoney;
+            hero.OnMoneyChange += _mainUI.AddMoneyMultiply;
             hero.OnMoneyUp += _mainUI.UpMoney;
             hero.OnAddRes += _uiResources.AddRes;
             _listHero.Add(hero);
-            CalculateStrong();
+            _mainUI.AddStrong(hero.Model.Strong);
         }
         private void HeroUnSubcribe(BaseHero hero)
         {
             hero.OnMerge -= MergeUnit;
-            hero.OnMoneyChange -= _mainUI.AddMoney;
+            hero.OnMoneyChange -= _mainUI.AddMoneyMultiply;
             hero.OnMoneyUp -= _mainUI.UpMoney;
             hero.OnAddRes -= _uiResources.AddRes;
             _listHero.Remove(hero);
-        }
-        private void CalculateStrong()
-        {
-            int temp = 0;
-            for (int i = 0; i < _listHero.Count; i++)
-            {
-                temp += _listHero[i].Model.Strong;
-            }
-            _mainUI.UpdateStrong(temp);
+            _mainUI.AddStrong(-hero.Model.Strong);
         }
 
         private void Replace(BaseHero currentHero, BaseHero nextHero)
@@ -180,6 +229,31 @@ namespace Game
                 hero.transform.position = vector3[i];
                 hero.Init(_currentModel, _manager);
                 HeroSubcribe(hero);
+            }
+        }
+        private void SetLayer(BaseHero hero)
+        {
+            Vector3 vector = new Vector3(hero.transform.position.x, hero.transform.position.y, hero.transform.position.z);
+            vector.z = _manager.SetLayer(hero.transform.position.y) + Random.Range(0.0001f, 0.1111f);
+            hero.transform.position = vector;
+        }
+        public void AdsSpawn()
+        {
+            Vector3 spawnPos = new Vector3(Random.Range(-8.3f, 5.5f), Random.Range(3f, -1.8f), 0);
+            MonoPool mono = _pool.Get(_AdsModel.Prefab, _spawnPool);
+            BaseHero hero = mono.Get() as BaseHero;
+            hero.transform.position = spawnPos;
+            hero.Init(_AdsModel, _manager);
+            HeroSubcribe(hero);
+            SetLayer(hero);
+            Save();
+            SetHero();
+            _windowBook.ShowCharacter(hero.CurrentIndex - 1);
+            _windowBook.ShowCharacter(hero.CurrentIndex - 2);
+            if (hero.CurrentIndex > _windowOpenHero.IndexOpen)
+            {
+                _windowOpenHero.StartOpen(hero.Model.Image);
+                _windowOpenHero.IndexOpen = hero.CurrentIndex;
             }
         }
     }

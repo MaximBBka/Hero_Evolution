@@ -40,7 +40,7 @@ namespace Game
         private void Save()
         {
             YandexGame.savesData.Strong = _totalStrong;            
-            YandexGame.savesData.Money = _money;            
+            YandexGame.savesData.Money = _money;                      
             if (_maxStrong < _totalStrong)
             {
                 _maxStrong = _totalStrong;
@@ -56,21 +56,52 @@ namespace Game
             StartCoroutine(SliderDown());
         }
 
-        public void AddMoney(int money)
+        public void AddMoneyMultiply(int money)
         {
             _money += money * MultiplyMoney;
-            _textMoney.SetText($"{_money}");
+            if (_money <= 0)
+            {
+                _money = 0;
+            }
+            UpdateInfo();
         }
-        public void UpdateStrong(int strong)
+        public void AddMoney(int money)
         {
-            _totalStrong = strong;
-            _textStrong.SetText($"{_totalStrong}");
+            _money += money;
+            if(_money <= 0)
+            {
+                _money = 0;
+            }
+            UpdateInfo();
+        }
+        public void AddStrong(int strong)
+        {
+            _totalStrong += strong;
+            UpdateInfo();
             Save();
         }
         public void UpdateInfo()
         {
-            _textMoney.SetText($"{_money}");
-            _textStrong.SetText($"{_totalStrong}");
+            if (_totalStrong > 1000)
+            {
+                int thousands = _totalStrong / 1000;
+                int hundreds = (_totalStrong % 1000) / 100;
+                _textStrong.text = $"{thousands}.{hundreds}K";
+            }
+            else
+            {
+                _textStrong.text = $"{_totalStrong}";
+            }
+            if (_money > 1000)
+            {
+                int thousands = _money / 1000;
+                int hundreds = (_money % 1000) / 100;
+                _textMoney.text = $"{thousands}.{hundreds}K";
+            }
+            else
+            {
+                _textMoney.text = $"{_money}";
+            }
         }
         public void UpMoney()
         {
