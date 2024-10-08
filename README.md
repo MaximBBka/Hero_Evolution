@@ -1,5 +1,5 @@
 # Hit_The_Ball
-«Hit The Ball» — интересная 3D-головоломка в жанре «артиллерийская игра»! Попадай в цель, обходя препятствия, и проходи уровни.
+«HeroEvolution» — проект сделан на заказ, для паблишера.
 Screenshots:
 -------------------------
 ![Alt text](/Screenshots/Screenshot1.png?raw=true "GamePlay")
