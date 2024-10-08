@@ -11,15 +11,18 @@ namespace Game
         [SerializeField] private Transform _panel;
         [SerializeField] private TextMeshProUGUI _textName;
         [SerializeField] private TextMeshProUGUI _textTimer;
+        [SerializeField] private TextMeshProUGUI _textNickName;
+        [SerializeField] private string[] _nickname;
 
         private MainUI _mainUI;
         private SpawnHero _spawnHero;
 
 
         [Inject]
-        public void Construct(MainUI ui)
+        public void Construct(MainUI ui, SpawnHero spawnHero)
         {
             _mainUI = ui;
+            _spawnHero = spawnHero;
         }
         private float _timer = 180;
         private void Start()
@@ -38,8 +41,10 @@ namespace Game
             if (_spawnHero._listHero.Count > 0)
             {
                 _panel.gameObject.SetActive(true);
+                _textNickName.SetText($"{_nickname[Random.Range(0, _nickname.Length - 1)]}");
             }
-            _timer = 180;        }
+            _timer = 180;        
+        }
         public string Convert(int time)
         {
             int minutes = (int)((time % 3600) / 60);
@@ -56,9 +61,10 @@ namespace Game
         {
             StartCoroutine(Timer());
             _panel.gameObject.SetActive(false);
-            int tempMoney = (_mainUI._money * 40) / 100;
+            int tempMoney = (_mainUI._money * 20) / 100;
+            int tempStrong = (_mainUI._totalStrong * 10) / 100;
             _mainUI.AddMoney(-tempMoney);
-            _mainUI.AddStrong(-5);
+            _mainUI.AddStrong(-tempStrong);
         }
     }
 }

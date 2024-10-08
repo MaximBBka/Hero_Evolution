@@ -267,8 +267,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.90000004, y: 0.90000004, z: 0.90000004}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2510876658441645308}
   m_Father: {fileID: 0}
@@ -346,8 +346,8 @@ MonoBehaviour:
     Price: 0
     GetMoney: 0
     GetRes: 0
-    NeedTotalStrong: 0
     Index: 0
+    SpawnTotal: 0
   <Render>k__BackingField: {fileID: 3013819028372568617}
   <_health>k__BackingField: {fileID: 2510876658441645308}
   <_textHelth>k__BackingField: {fileID: 2794021074007925435}

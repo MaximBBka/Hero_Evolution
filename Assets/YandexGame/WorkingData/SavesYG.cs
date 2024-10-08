@@ -33,6 +33,7 @@ namespace YG
         public int TotalSpawnUnits;
         public Sprite CurrentSpawn;
         public Sprite AdsSpawn;
+        public bool isFirstOpen = true;
         // ...
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны

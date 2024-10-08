@@ -18,29 +18,44 @@ namespace Game
 
         [SerializeField] private TextMeshProUGUI _textMoney;
         [SerializeField] private TextMeshProUGUI _textStrong;
-        [SerializeField] private LeaderboardYG leaderboardYG;
+        [SerializeField] private Transform _windowTutorial;
 
 
         private int _totalUpMoney = 4;
         private float _speedSliderDown = 0.1f;
         private int _maxStrong;
+        private bool _isFirstSession;
 
         public int MultiplyMoney = 1;
         public Image ImagePrice;
         public Image ImageAds;
         public TextMeshProUGUI TextPrice;
+        private void Awake()
+        {
+            Load();
+        }
+        public void ShowAds(int index) // Устанавливаем на кнопки с рекламой и указываем индекс
+        {
+            if (AdsProvider.Instance._rewardIndex != -1)
+            {
+                AdsProvider.Instance._rewardIndex = -1;
+            }
+            AdsProvider.Instance.RewardAds(index);
+        }
         private void Load()
         {
             YandexGame.LoadProgress();
             _totalStrong = YandexGame.savesData.Strong;
             _maxStrong = YandexGame.savesData.MaxStrong;
             _money = YandexGame.savesData.Money;
+            _isFirstSession = YandexGame.savesData.isFirstOpen;
             UpdateInfo();
         }
         private void Save()
         {
             YandexGame.savesData.Strong = _totalStrong;            
             YandexGame.savesData.Money = _money;                      
+            YandexGame.savesData.isFirstOpen = _isFirstSession;                      
             if (_maxStrong < _totalStrong)
             {
                 _maxStrong = _totalStrong;
@@ -52,10 +67,18 @@ namespace Game
 
         private void Start()
         {
-            Load();
+            if(_isFirstSession)
+            {                
+                _windowTutorial.gameObject.SetActive(true);
+            }
             StartCoroutine(SliderDown());
         }
-
+        public void CloseTutorial()
+        {
+            _isFirstSession = false;
+            _windowTutorial.gameObject.SetActive(false);
+            Save();
+        }
         public void AddMoneyMultiply(int money)
         {
             _money += money * MultiplyMoney;
@@ -136,8 +159,6 @@ namespace Game
         public void AddLeaderBoard(int total)
         {
             YandexGame.NewLeaderboardScores("LiderBoardStrong", total);
-            leaderboardYG.NewScore(total);
-            leaderboardYG.UpdateLB();
         }
         private void OnDestroy()
         {

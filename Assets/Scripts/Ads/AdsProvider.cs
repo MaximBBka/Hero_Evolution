@@ -6,17 +6,19 @@ namespace Game
 {
     public class AdsProvider : MonoBehaviour
     {
-        private int _rewardIndex = -1; // 0 - Всплывающее окно с рекламмой. 1 - Случайное количество ресурсов. 2 - Рекламма для спавна + 2 героя
-        private WindowAds _windowAds;
-        private UIRecources _uIRecources;
-        private SpawnHero _spawnHero;
+        public int _rewardIndex = -1; // 0 - Всплывающее окно с рекламмой. 1 - Случайное количество ресурсов. 2 - Рекламма для спавна + 2 героя
+      
 
-        [Inject]
-        public void Constructor(WindowAds windowAds, UIRecources recources, SpawnHero spawn)
+        public static AdsProvider Instance { get; private set; }
+        private void Awake()
         {
-            _windowAds = windowAds;
-            _uIRecources = recources;
-            _spawnHero = spawn;
+            if (!Instance)
+            {
+                DontDestroyOnLoad(gameObject);
+                Instance = this;
+                return;
+            }
+            Destroy(gameObject);
         }
 
         public void RewardAds(int index) // Логика выбора рекламмы
@@ -39,7 +41,7 @@ namespace Game
         {
             if (_rewardIndex == 0)
             {
-                _windowAds.AddMoneyAds();
+                SetupAds.Instance.WindowAds.AddMoneyAds();
                 _rewardIndex = -1;
             }
         }
@@ -48,7 +50,7 @@ namespace Game
         {
             if (_rewardIndex == 1)
             {
-                _uIRecources.AddRandomRes();
+                SetupAds.Instance.UIRecources.AddRandomRes();
                 _rewardIndex = -1;
             }
         }
@@ -57,7 +59,7 @@ namespace Game
         {
             if (_rewardIndex == 2)
             {
-                _spawnHero.AdsSpawn();
+                SetupAds.Instance.SpawnHero.AdsSpawn();
                 _rewardIndex = -1;
             }
         }

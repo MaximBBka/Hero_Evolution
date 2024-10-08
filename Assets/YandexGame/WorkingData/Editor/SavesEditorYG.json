@@ -1,5 +1,5 @@
 {
-    "idSave": 713,
+    "idSave": 29,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -11,70 +11,30 @@
         false
     ],
     "BaseHeroes": [
-        8,
-        6,
-        6,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        4,
-        3
+        1,
+        1
     ],
     "ElementBookOpen": [
-        0,
-        2,
-        1,
-        3,
-        4,
-        5,
-        6,
-        7
+        0
     ],
     "TotalRes": [
-        6,
-        4,
-        2
+        0,
+        0,
+        0
     ],
-    "Strong": 352,
-    "Money": 1453,
-    "MaxStrong": 352,
-    "TotalBattle": 1,
+    "Strong": 36,
+    "Money": 2520,
+    "MaxStrong": 36,
+    "TotalBattle": 2,
     "BattleWin": 2,
-    "IndexOpenHero": 8,
-    "LevelStrong": 3,
-    "TotalSpawnUnits": 174,
+    "IndexOpenHero": 0,
+    "LevelStrong": 0,
+    "TotalSpawnUnits": 2,
     "CurrentSpawn": {
-        "instanceID": 28582
+        "instanceID": 28776
     },
     "AdsSpawn": {
-        "instanceID": 28590
-    }
+        "instanceID": 28838
+    },
+    "isFirstOpen": false
 }

@@ -16,8 +16,8 @@ namespace Game
             if (YandexGame.EnvironmentData.language == "ru")
             {
                 _textButtonPlay.SetText("Играть");
-                _textButtonBack.SetText("Забрать");
-                _textReward.SetText("НАГРАДА");
+                _textButtonBack.SetText("Получить");
+                _textReward.SetText("награда");
             }
             else if (YandexGame.EnvironmentData.language == "en")
             {

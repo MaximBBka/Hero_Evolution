@@ -25,6 +25,7 @@ namespace Game
         private int _totalSpawnUnit;
         private Sprite _currentSpawn;
         private Sprite _adsSpawn;
+        private int _saveHero;
 
         [Inject]
         public void Construct(MainUI ui, WindowBook window, UIRecources recources, ClassPool pool, WindowOpenHero openHero)
@@ -52,26 +53,18 @@ namespace Game
             _totalSpawnUnit = YandexGame.savesData.TotalSpawnUnits;
             _currentSpawn = YandexGame.savesData.CurrentSpawn;
             _adsSpawn = YandexGame.savesData.AdsSpawn;
-            int index = YandexGame.savesData.BaseHeroes.Count;
-            for (int i = 0; i < index; i++)
-            {
-                int temp = YandexGame.savesData.BaseHeroes[i];
-                _listHero.Add(sOHero.ModelHeroes[temp - 1].Prefab);
-            }
+            _saveHero = YandexGame.savesData.BaseHeroes.Count;
         }
         private void StartSpawn()
         {
-            for (int i = 0; i < _listHero.Count; i++)
+            for (int i = 0; i < _saveHero; i++)
             {
                 Vector3 spawnPos = new Vector3(Random.Range(-8.3f, 5.5f), Random.Range(3f, -1.8f), 0);
-                MonoPool mono = _pool.Get(_listHero[i], _spawnPool);
+                MonoPool mono = _pool.Get(sOHero.ModelHeroes[YandexGame.savesData.BaseHeroes[i] - 1].Prefab, _spawnPool);
                 BaseHero hero = mono.Get() as BaseHero;
                 hero.transform.position = spawnPos;
                 hero.Init(sOHero.ModelHeroes[YandexGame.savesData.BaseHeroes[i] - 1], _manager);
-                hero.OnMerge += MergeUnit;
-                hero.OnMoneyChange += _mainUI.AddMoneyMultiply;
-                hero.OnMoneyUp += _mainUI.UpMoney;
-                hero.OnAddRes += _uiResources.AddRes;
+                HeroSubcribe(hero);
                 SetLayer(hero);
             }
         }
@@ -99,7 +92,6 @@ namespace Game
                     }
                     HeroSubcribe(newUnit);
                     _totalSpawnUnit++;
-                    Save();
                     SetHero();
                     return;
                 }
@@ -118,7 +110,6 @@ namespace Game
                 hero.Init(_currentModel, _manager);
                 HeroSubcribe(hero);
                 SetLayer(hero);
-                Save();
                 SetHero();
                 _totalSpawnUnit++;
             }
@@ -131,6 +122,7 @@ namespace Game
                 {
                     BaseHero currentModel = _currentModel.Prefab;
                     _currentModel = sOHero.ModelHeroes[i];
+                    Save();
                     if (currentModel == _currentModel.Prefab) return;
                     Replace(currentModel, sOHero.ModelHeroes[i].Prefab);
                     _mainUI.ImagePrice.sprite = _currentModel.Image;
@@ -163,9 +155,10 @@ namespace Game
                         _adsSpawn = sOHero.ModelHeroes[i + 2].Image;
                         _AdsModel = sOHero.ModelHeroes[i + 2];
                     }
+                    Save();
                     return;
                 }
-            }
+            }           
         }
         private void OnDestroy()
         {
@@ -246,7 +239,6 @@ namespace Game
             hero.Init(_AdsModel, _manager);
             HeroSubcribe(hero);
             SetLayer(hero);
-            Save();
             SetHero();
             _windowBook.ShowCharacter(hero.CurrentIndex - 1);
             _windowBook.ShowCharacter(hero.CurrentIndex - 2);
