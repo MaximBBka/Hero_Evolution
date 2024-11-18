@@ -6,6 +6,7 @@ using System;
 using System.Linq;
 using DG.Tweening;
 using Random = UnityEngine.Random;
+using YG;
 
 namespace Game
 {
@@ -33,8 +34,16 @@ namespace Game
         {
             SpawmHero();
             SpawnEnemy();
-            SetTargetEnemy();
-            SetTargetHero();
+            if (_fillingEnemies.IsWin)
+            {
+                SetTargetEnemy();
+                SetTargetHero();
+            }
+            else
+            {
+                SetTargetHero();
+                SetTargetEnemy();
+            }
             _coroutine = StartCoroutine(Battle());
         }
         public void SpawmHero()
@@ -61,7 +70,7 @@ namespace Game
                 baseEnemy._textHelth.SetText($"{baseEnemy.Model.Heath}");
                 baseEnemy._health.gameObject.SetActive(true);
                 baseEnemy._health.transform.localRotation = Quaternion.Euler(baseEnemy._textHelth.transform.localRotation.x, -180, baseEnemy._textHelth.transform.localRotation.z);
-                baseEnemy._textHelth.transform.localScale = new Vector3(-1,1,1);
+                baseEnemy._textHelth.transform.localScale = new Vector3(-1, 1, 1);
                 baseEnemy.Render.flipX = true;
                 baseEnemy.Render.sortingOrder = i;
                 baseEnemy.OnDeath += OnDeath;
@@ -187,8 +196,17 @@ namespace Game
                 return;
             }
             _targets.Clear();
-            SetTargetEnemy();
-            SetTargetHero();
+            if (_fillingEnemies.IsWin)
+            {
+                SetTargetEnemy();
+                SetTargetHero();
+            }
+            else
+            {
+                SetTargetHero();
+                SetTargetEnemy();
+            }
+
         }
     }
     [Serializable]

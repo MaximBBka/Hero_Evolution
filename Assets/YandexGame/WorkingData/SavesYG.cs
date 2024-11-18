@@ -1,7 +1,5 @@
-﻿using Game;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
 namespace YG
 {
     [System.Serializable]
@@ -34,6 +32,8 @@ namespace YG
         public Sprite CurrentSpawn;
         public Sprite AdsSpawn;
         public bool isFirstOpen = true;
+        public string EnemyName;
+        public int EnemyStrong;
         // ...
 
         // Поля (сохранения) можно удалять и создавать новые. При обновлении игры сохранения ломаться не должны

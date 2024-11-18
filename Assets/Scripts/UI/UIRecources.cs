@@ -40,20 +40,32 @@ namespace Game
             Save();
             for (int i = 0; i < CountRes.Length; i++)
             {
-                if (_sOResources.ModelResources[i].sOResource._modelRecource[_currentLevel].Price >= CountRes[i])
+                if (_sOResources.ModelResources[i].sOResource._modelRecource[_currentLevel].Price > CountRes[i])
+                {
+                    _textRes[i].color = Color.red;
+                }
+                else
+                {
+                    _textRes[i].color = Color.green;
+                }  
+            }
+            for (int i = 0; i < CountRes.Length; i++)
+            {
+                if (_sOResources.ModelResources[i].sOResource._modelRecource[_currentLevel].Price > CountRes[i])
                 {
                     IsUpgrade = false;
                     _button.color = Color.red;
                     return;
                 }
+                else
+                {
+                    _textRes[i].color = Color.green;
+                    _button.color = Color.white;
+                    IsUpgrade = true;
+                }
             }
-            CanBuy();
         }
-        public void CanBuy()
-        {
-            _button.color = Color.white;
-            IsUpgrade = true;
-        }
+
         public void AddRes(int total, Transform pos = null)
         {
             int randomRes = Random.Range(0, 3);
@@ -95,10 +107,18 @@ namespace Game
                 UpgradeStrong();
             }
         }
-
+        private void AdsAddRes(int total)
+        {
+            for (int i = 0; i < CountRes.Length; i++)
+            {
+                CountRes[i] += total;
+                _textRes[i].SetText($"{CountRes[i]}");
+                UpgradeStrong();
+            }
+        }
         public void AddRandomRes()
         {
-            AddRes(Random.Range(_sOResources.ModelResources[0].sOResource._modelRecource[_currentLevel].RandomResAds[0], _sOResources.ModelResources[0].sOResource._modelRecource[_currentLevel].RandomResAds.Length - 1 + 1));
+            AdsAddRes(Random.Range(_sOResources.ModelResources[0].sOResource._modelRecource[_currentLevel].RandomResAds[0], _sOResources.ModelResources[0].sOResource._modelRecource[_currentLevel].RandomResAds.Length - 1 + 1));
         }
 
         private void OnDestroy()

@@ -21,8 +21,8 @@ namespace Game
         [SerializeField] private Transform _windowTutorial;
 
 
-        private int _totalUpMoney = 4;
-        private float _speedSliderDown = 0.1f;
+        private int _totalUpMoney = 2;
+        private float _speedSliderDown = 0.08f;
         private int _maxStrong;
         private bool _isFirstSession;
 

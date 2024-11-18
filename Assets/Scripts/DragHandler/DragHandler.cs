@@ -9,7 +9,6 @@ namespace Game
         private Vector2 areaNegative = new Vector2(-8.3f, -1.8f);
         public virtual void OnMouseDrag()
         {
-            Debug.Log("OnDrag");
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             pos.z = 0;
             pos2.z = 0;
@@ -33,11 +32,9 @@ namespace Game
         public virtual void OnStartDrag()
         {
             // логика первого нажатия
-            Debug.Log("+1");
         }
         public virtual void OnEndDrag()
         {
-            Debug.Log("OnEndDrag");
         }
     }
 }

@@ -59,7 +59,7 @@ MonoBehaviour:
     Damage: 4
     Strong: 10
     Price: 900
-    GetMoney: 20
+    GetMoney: 10
     GetRes: 2
     Index: 5
     SpawnTotal: 250
@@ -69,7 +69,7 @@ MonoBehaviour:
     Damage: 5
     Strong: 15
     Price: 600
-    GetMoney: 30
+    GetMoney: 15
     GetRes: 2
     Index: 6
     SpawnTotal: 350
@@ -79,7 +79,7 @@ MonoBehaviour:
     Damage: 5
     Strong: 20
     Price: 750
-    GetMoney: 35
+    GetMoney: 20
     GetRes: 2
     Index: 7
     SpawnTotal: 450
@@ -89,7 +89,7 @@ MonoBehaviour:
     Damage: 6
     Strong: 25
     Price: 850
-    GetMoney: 40
+    GetMoney: 20
     GetRes: 2
     Index: 8
     SpawnTotal: 550
@@ -99,7 +99,7 @@ MonoBehaviour:
     Damage: 7
     Strong: 30
     Price: 1000
-    GetMoney: 50
+    GetMoney: 25
     GetRes: 3
     Index: 9
     SpawnTotal: 650
@@ -109,7 +109,7 @@ MonoBehaviour:
     Damage: 10
     Strong: 35
     Price: 1300
-    GetMoney: 60
+    GetMoney: 30
     GetRes: 3
     Index: 10
     SpawnTotal: 750
@@ -119,7 +119,7 @@ MonoBehaviour:
     Damage: 12
     Strong: 40
     Price: 1550
-    GetMoney: 70
+    GetMoney: 35
     GetRes: 3
     Index: 11
     SpawnTotal: 850
@@ -129,7 +129,7 @@ MonoBehaviour:
     Damage: 13
     Strong: 45
     Price: 1800
-    GetMoney: 80
+    GetMoney: 40
     GetRes: 3
     Index: 12
     SpawnTotal: 950
@@ -139,7 +139,7 @@ MonoBehaviour:
     Damage: 16
     Strong: 50
     Price: 2100
-    GetMoney: 100
+    GetMoney: 50
     GetRes: 3
     Index: 13
     SpawnTotal: 1050
@@ -149,7 +149,7 @@ MonoBehaviour:
     Damage: 18
     Strong: 55
     Price: 2300
-    GetMoney: 110
+    GetMoney: 55
     GetRes: 3
     Index: 14
     SpawnTotal: 1150
@@ -159,7 +159,7 @@ MonoBehaviour:
     Damage: 21
     Strong: 60
     Price: 2500
-    GetMoney: 120
+    GetMoney: 60
     GetRes: 3
     Index: 15
     SpawnTotal: 1250
@@ -169,7 +169,7 @@ MonoBehaviour:
     Damage: 24
     Strong: 65
     Price: 2850
-    GetMoney: 130
+    GetMoney: 65
     GetRes: 3
     Index: 16
     SpawnTotal: 1350
@@ -179,7 +179,7 @@ MonoBehaviour:
     Damage: 70
     Strong: 64000
     Price: 3100
-    GetMoney: 140
+    GetMoney: 70
     GetRes: 3
     Index: 17
     SpawnTotal: 1450
@@ -189,7 +189,7 @@ MonoBehaviour:
     Damage: 33
     Strong: 75
     Price: 3500
-    GetMoney: 150
+    GetMoney: 75
     GetRes: 3
     Index: 18
     SpawnTotal: 1550
@@ -199,7 +199,7 @@ MonoBehaviour:
     Damage: 35
     Strong: 80
     Price: 3850
-    GetMoney: 160
+    GetMoney: 80
     GetRes: 3
     Index: 19
     SpawnTotal: 1650
@@ -209,7 +209,7 @@ MonoBehaviour:
     Damage: 38
     Strong: 85
     Price: 4100
-    GetMoney: 170
+    GetMoney: 85
     GetRes: 3
     Index: 20
     SpawnTotal: 1750
@@ -219,7 +219,7 @@ MonoBehaviour:
     Damage: 43
     Strong: 90
     Price: 4500
-    GetMoney: 180
+    GetMoney: 90
     GetRes: 3
     Index: 21
     SpawnTotal: 1850
@@ -229,7 +229,7 @@ MonoBehaviour:
     Damage: 47
     Strong: 95
     Price: 4900
-    GetMoney: 190
+    GetMoney: 95
     GetRes: 3
     Index: 22
     SpawnTotal: 1950
@@ -239,7 +239,7 @@ MonoBehaviour:
     Damage: 51
     Strong: 100
     Price: 5400
-    GetMoney: 200
+    GetMoney: 100
     GetRes: 3
     Index: 23
     SpawnTotal: 2050
@@ -249,7 +249,7 @@ MonoBehaviour:
     Damage: 52
     Strong: 105
     Price: 5650
-    GetMoney: 210
+    GetMoney: 105
     GetRes: 3
     Index: 24
     SpawnTotal: 2150
@@ -259,7 +259,7 @@ MonoBehaviour:
     Damage: 58
     Strong: 110
     Price: 6000
-    GetMoney: 220
+    GetMoney: 110
     GetRes: 3
     Index: 25
     SpawnTotal: 2250
@@ -269,7 +269,7 @@ MonoBehaviour:
     Damage: 60
     Strong: 115
     Price: 6400
-    GetMoney: 230
+    GetMoney: 115
     GetRes: 3
     Index: 26
     SpawnTotal: 2350
@@ -279,7 +279,7 @@ MonoBehaviour:
     Damage: 70
     Strong: 120
     Price: 6800
-    GetMoney: 240
+    GetMoney: 120
     GetRes: 4
     Index: 27
     SpawnTotal: 2450
@@ -289,7 +289,7 @@ MonoBehaviour:
     Damage: 75
     Strong: 125
     Price: 7100
-    GetMoney: 250
+    GetMoney: 125
     GetRes: 4
     Index: 28
     SpawnTotal: 2550
@@ -299,7 +299,7 @@ MonoBehaviour:
     Damage: 83
     Strong: 130
     Price: 7400
-    GetMoney: 260
+    GetMoney: 130
     GetRes: 4
     Index: 29
     SpawnTotal: 2650
@@ -309,7 +309,7 @@ MonoBehaviour:
     Damage: 90
     Strong: 145
     Price: 8000
-    GetMoney: 270
+    GetMoney: 135
     GetRes: 4
     Index: 30
     SpawnTotal: 2750
@@ -319,7 +319,7 @@ MonoBehaviour:
     Damage: 92
     Strong: 150
     Price: 8400
-    GetMoney: 280
+    GetMoney: 140
     GetRes: 4
     Index: 31
     SpawnTotal: 2850
@@ -329,7 +329,7 @@ MonoBehaviour:
     Damage: 96
     Strong: 155
     Price: 8700
-    GetMoney: 290
+    GetMoney: 145
     GetRes: 4
     Index: 32
     SpawnTotal: 2950
@@ -339,7 +339,7 @@ MonoBehaviour:
     Damage: 100
     Strong: 160
     Price: 9100
-    GetMoney: 300
+    GetMoney: 150
     GetRes: 4
     Index: 33
     SpawnTotal: 3050
@@ -349,7 +349,7 @@ MonoBehaviour:
     Damage: 103
     Strong: 165
     Price: 9400
-    GetMoney: 310
+    GetMoney: 155
     GetRes: 4
     Index: 34
     SpawnTotal: 3150
@@ -359,7 +359,7 @@ MonoBehaviour:
     Damage: 110
     Strong: 170
     Price: 9700
-    GetMoney: 320
+    GetMoney: 160
     GetRes: 4
     Index: 35
     SpawnTotal: 3250
@@ -369,7 +369,7 @@ MonoBehaviour:
     Damage: 120
     Strong: 175
     Price: 10500
-    GetMoney: 330
+    GetMoney: 165
     GetRes: 5
     Index: 36
     SpawnTotal: 3350
@@ -379,7 +379,7 @@ MonoBehaviour:
     Damage: 125
     Strong: 180
     Price: 10900
-    GetMoney: 340
+    GetMoney: 170
     GetRes: 5
     Index: 37
     SpawnTotal: 3450
@@ -389,7 +389,7 @@ MonoBehaviour:
     Damage: 130
     Strong: 185
     Price: 11400
-    GetMoney: 350
+    GetMoney: 175
     GetRes: 5
     Index: 38
     SpawnTotal: 3550
@@ -399,7 +399,7 @@ MonoBehaviour:
     Damage: 140
     Strong: 190
     Price: 11800
-    GetMoney: 360
+    GetMoney: 180
     GetRes: 5
     Index: 39
     SpawnTotal: 3650
@@ -409,7 +409,7 @@ MonoBehaviour:
     Damage: 160
     Strong: 195
     Price: 13000
-    GetMoney: 370
+    GetMoney: 185
     GetRes: 5
     Index: 40
     SpawnTotal: 3750

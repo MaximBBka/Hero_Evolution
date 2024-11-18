@@ -54,7 +54,7 @@ namespace Game
             {
                 if (_mainUI._totalStrong >= _reward.Rewards[i].Strong)
                 {
-                    _randomMoney = Random.Range(_reward.Rewards[i].AddMoney, _reward.Rewards[i].AddMoney * 2);
+                    _randomMoney = Random.Range(_reward.Rewards[i].AddMoney * 2, (_reward.Rewards[i].AddMoney * 2) * 2);
                     return;
                 }
             }

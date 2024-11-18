@@ -71,7 +71,6 @@ namespace Game
             }
             base.OnStartDrag();
             int randomRes = Random.Range(0, 6);
-            Debug.Log($"{randomRes}");
             if (randomRes == 5)
             {
                 OnAddRes.Invoke(Model.GetRes, transform);              

@@ -290,7 +290,7 @@ MonoBehaviour:
     Index: 0
     SpawnTotal: 0
   <Render>k__BackingField: {fileID: 4241957222346383503}
-  <_health>k__BackingField: {fileID: 4472369381140626492}
+  <_health>k__BackingField: {fileID: 2469167054736141311}
   <_textHelth>k__BackingField: {fileID: 2116503848164384845}
   _collider2D: {fileID: 8902064121969526556}
   _animator: {fileID: 7321363101431131991}

@@ -2,6 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YG;
 using Zenject;
 
 namespace Game
@@ -12,11 +13,15 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _textName;
         [SerializeField] private TextMeshProUGUI _textTimer;
         [SerializeField] private TextMeshProUGUI _textNickName;
+        [SerializeField] private TextMeshProUGUI _textStrongEnemy;
         [SerializeField] private string[] _nickname;
 
         private MainUI _mainUI;
         private SpawnHero _spawnHero;
-
+        private int _totalBattle;
+        private int _battleWin;
+        private string _enemyName;
+        private int _enemyStrong;
 
         [Inject]
         public void Construct(MainUI ui, SpawnHero spawnHero)
@@ -24,12 +29,24 @@ namespace Game
             _mainUI = ui;
             _spawnHero = spawnHero;
         }
-        private float _timer = 180;
+        private float _timer = 120;
         private void Start()
         {
+            Load();
             StartCoroutine(Timer());
         }
-
+        private void Load()
+        {
+            YandexGame.LoadProgress();
+            _totalBattle = YandexGame.savesData.TotalBattle;
+            _battleWin = YandexGame.savesData.BattleWin;
+        }
+        private void Save()
+        {
+            YandexGame.savesData.EnemyName = _enemyName;
+            YandexGame.savesData.EnemyStrong = _enemyStrong;
+            YandexGame.SaveProgress();
+        }
         public IEnumerator Timer()
         {
             while (_timer > 0)
@@ -38,12 +55,20 @@ namespace Game
                 _timer -= 1;
                 yield return new WaitForSeconds(1f);
             }
+            _timer = 120;
             if (_spawnHero._listHero.Count > 0)
             {
+                SetStrongEnemy();
                 _panel.gameObject.SetActive(true);
-                _textNickName.SetText($"{_nickname[Random.Range(0, _nickname.Length - 1)]}");
+                _enemyName = _nickname[Random.Range(0, _nickname.Length - 1)];
+                _textNickName.SetText($"{_enemyName}");
+                Save();
             }
-            _timer = 180;        
+            else
+            {
+                StopCoroutine(Timer());
+                StartCoroutine(Timer());
+            }
         }
         public string Convert(int time)
         {
@@ -52,6 +77,26 @@ namespace Game
 
             // Форматирование строки
             return string.Format("{0:D2}:{1:D2}", minutes, seconds);
+        }
+        private void SetStrongEnemy()
+        {
+            if (_totalBattle < 3)
+            {
+                _enemyStrong = Random.Range(_mainUI._totalStrong < 50 ? 1 : 50, _mainUI._totalStrong > 50 ? _mainUI._totalStrong : 49);
+                _textStrongEnemy.SetText($"{_enemyStrong}");
+            }else
+            {
+                if(_battleWin < 2)
+                {
+                    _enemyStrong = Random.Range(_mainUI._totalStrong < 50 ? 1 : 50, _mainUI._totalStrong > 50 ? _mainUI._totalStrong : 49);
+                    _textStrongEnemy.SetText($"{_enemyStrong}");
+                }
+                else
+                {
+                    _enemyStrong = Random.Range(_mainUI._totalStrong + 50, _mainUI._totalStrong + 400);
+                    _textStrongEnemy.SetText($"{_enemyStrong}");
+                }
+            }
         }
         public void NextScene()
         {

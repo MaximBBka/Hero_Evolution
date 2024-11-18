@@ -7,7 +7,7 @@ namespace Game
 {
     public class SpawnHero : MonoBehaviour
     {
-        [field: SerializeField] public List<BaseHero> _listHero {  get; private set; }
+        [field: SerializeField] public List<BaseHero> _listHero { get; private set; }
         [SerializeField] private LayerManager _manager;
         [SerializeField] private Transform _spawnPool;
 
@@ -64,7 +64,11 @@ namespace Game
                 BaseHero hero = mono.Get() as BaseHero;
                 hero.transform.position = spawnPos;
                 hero.Init(sOHero.ModelHeroes[YandexGame.savesData.BaseHeroes[i] - 1], _manager);
-                HeroSubcribe(hero);
+                hero.OnMerge += MergeUnit;
+                hero.OnMoneyChange += _mainUI.AddMoneyMultiply;
+                hero.OnMoneyUp += _mainUI.UpMoney;
+                hero.OnAddRes += _uiResources.AddRes;
+                _listHero.Add(hero);
                 SetLayer(hero);
             }
         }
@@ -85,7 +89,7 @@ namespace Game
                     newUnit.Init(sOHero.ModelHeroes[i + 1], _manager);
                     newUnit.transform.position = hero.transform.position;
                     _windowBook.ShowCharacter(i + 1);
-                    if(newUnit.CurrentIndex > _windowOpenHero.IndexOpen)
+                    if (newUnit.CurrentIndex > _windowOpenHero.IndexOpen)
                     {
                         _windowOpenHero.StartOpen(newUnit.Model.Image);
                         _windowOpenHero.IndexOpen = newUnit.CurrentIndex;
@@ -158,7 +162,7 @@ namespace Game
                     Save();
                     return;
                 }
-            }           
+            }
         }
         private void OnDestroy()
         {
@@ -232,20 +236,23 @@ namespace Game
         }
         public void AdsSpawn()
         {
-            Vector3 spawnPos = new Vector3(Random.Range(-8.3f, 5.5f), Random.Range(3f, -1.8f), 0);
-            MonoPool mono = _pool.Get(_AdsModel.Prefab, _spawnPool);
-            BaseHero hero = mono.Get() as BaseHero;
-            hero.transform.position = spawnPos;
-            hero.Init(_AdsModel, _manager);
-            HeroSubcribe(hero);
-            SetLayer(hero);
-            SetHero();
-            _windowBook.ShowCharacter(hero.CurrentIndex - 1);
-            _windowBook.ShowCharacter(hero.CurrentIndex - 2);
-            if (hero.CurrentIndex > _windowOpenHero.IndexOpen)
+            for (int i = 0; i < 2; i++)
             {
-                _windowOpenHero.StartOpen(hero.Model.Image);
-                _windowOpenHero.IndexOpen = hero.CurrentIndex;
+                Vector3 spawnPos = new Vector3(Random.Range(-8.3f, 5.5f), Random.Range(3f, -1.8f), 0);
+                MonoPool mono = _pool.Get(_AdsModel.Prefab, _spawnPool);
+                BaseHero hero = mono.Get() as BaseHero;
+                hero.transform.position = spawnPos;
+                hero.Init(_AdsModel, _manager);
+                HeroSubcribe(hero);
+                SetLayer(hero);
+                SetHero();
+                _windowBook.ShowCharacter(hero.CurrentIndex - 1);
+                _windowBook.ShowCharacter(hero.CurrentIndex - 2);
+                if (hero.CurrentIndex > _windowOpenHero.IndexOpen)
+                {
+                    _windowOpenHero.StartOpen(hero.Model.Image);
+                    _windowOpenHero.IndexOpen = hero.CurrentIndex;
+                }
             }
         }
     }

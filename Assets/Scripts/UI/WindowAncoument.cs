@@ -17,6 +17,7 @@ namespace Game
         [SerializeField] private Transform _particle1;
         [SerializeField] private Transform _particle2;
         [SerializeField] private SOReward _reward;
+        [SerializeField] private Transform _windowStrong;
         
         private int _strongPlayer;
         private int _moneyPlayer;
@@ -44,6 +45,7 @@ namespace Game
         public void ShowWin()
         {
             AudioManager.Instance.Sound.PlayOneShot(AudioManager.Instance.Win);
+            _windowStrong.gameObject.SetActive(false);
             _panelAncoument.gameObject.SetActive(true);
             _panelStars.gameObject.SetActive(true);
             _particle1.gameObject.SetActive(true);
@@ -79,6 +81,7 @@ namespace Game
         public void ShowLose()
         {
             AudioManager.Instance.Sound.PlayOneShot(AudioManager.Instance.Lose);
+            _windowStrong.gameObject.SetActive(false);
             _panelAncoument.gameObject.SetActive(true);
             _panelStars.gameObject.SetActive(false);
             _particle1.gameObject.SetActive(false);
@@ -96,8 +99,17 @@ namespace Game
                 _textTitle.SetText($"Yenilgi!");
             }         
             SetReward();
+            if (_rewardStrong2 > 1000)
+            {
+                int thousands = _rewardStrong2 / 1000;
+                int hundreds = (_rewardStrong2 % 1000) / 100;
+                _textReward2.text = $"-{thousands}.{hundreds}K";
+            }
+            else
+            {
+                _textReward2.text = $"-{_rewardStrong2}";
+            }
             _textReward1.SetText($"-{_rewardMoney2}");
-            _textReward2.SetText($"-{_rewardStrong2}");
             Save(-_rewardStrong2, -_rewardMoney2);
         }
 
@@ -110,7 +122,7 @@ namespace Game
                     _rewardMoney1 = _reward.Rewards[i].AddMoney;
                     _rewardMoney2 = (_moneyPlayer * 40) / 100;
                     _rewardStrong1 = _reward.Rewards[i].AddStrong;
-                    _rewardStrong2 = _reward.Rewards[i].RemoveStrong;
+                    _rewardStrong2 = (_strongPlayer * 20) / 100;
                 }
             }
         }

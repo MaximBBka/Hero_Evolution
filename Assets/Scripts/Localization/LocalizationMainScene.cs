@@ -36,7 +36,7 @@ namespace Game
                 _textAdsMoney.SetText("Получить");
                 _textTitleBook.SetText("СПИСОК");
                 _textTitleLeaderBoard.SetText("Таблица лидеров");
-                _textTitleBattle.SetText("НАПАДЕНИЕ");
+                _textTitleBattle.SetText("нападение");
                 _textTitleBattle2.SetText("На вас напал:");
                 _textButtonLeave.SetText("Убежать");
                 _textButtonFight.SetText("В бой");
