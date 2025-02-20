@@ -197,7 +197,6 @@ namespace Game
             hero.OnMoneyUp -= _mainUI.UpMoney;
             hero.OnAddRes -= _uiResources.AddRes;
             _listHero.Remove(hero);
-            _mainUI.AddStrong(-hero.Model.Strong);
         }
 
         private void Replace(BaseHero currentHero, BaseHero nextHero)
@@ -236,7 +235,7 @@ namespace Game
         }
         public void AdsSpawn()
         {
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Vector3 spawnPos = new Vector3(Random.Range(-8.3f, 5.5f), Random.Range(3f, -1.8f), 0);
                 MonoPool mono = _pool.Get(_AdsModel.Prefab, _spawnPool);

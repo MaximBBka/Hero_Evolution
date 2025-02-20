@@ -31,7 +31,7 @@ namespace Game
             while (true)
             {
                 _panel.gameObject.SetActive(false);
-                yield return new WaitForSeconds(60);
+                yield return new WaitForSeconds(30);
                 _panel.gameObject.SetActive(true);               
                 SetRandomMoney();
                 if (_randomMoney > 1000)
@@ -44,7 +44,7 @@ namespace Game
                 {
                     _totalMoney.text = $"{_randomMoney}";
                 }
-                yield return new WaitForSeconds(20);
+                yield return new WaitForSeconds(30);
                 _panel.gameObject.SetActive(false);
             }
         }
@@ -54,7 +54,7 @@ namespace Game
             {
                 if (_mainUI._totalStrong >= _reward.Rewards[i].Strong)
                 {
-                    _randomMoney = Random.Range(_reward.Rewards[i].AddMoney * 2, (_reward.Rewards[i].AddMoney * 2) * 2);
+                    _randomMoney = Random.Range(_reward.Rewards[i].AddMoney, (_reward.Rewards[i].AddMoney * 2));
                     return;
                 }
             }

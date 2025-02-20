@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using YG;
 using Zenject;
 
@@ -6,8 +7,12 @@ namespace Game
 {
     public class AdsProvider : MonoBehaviour
     {
+        [SerializeField] private int _delayIntro;
+
         public int _rewardIndex = -1; // 0 - Всплывающее окно с рекламмой. 1 - Случайное количество ресурсов. 2 - Рекламма для спавна + 2 героя
-      
+
+        private float _timer;
+        private float _timerPause = 2f;
 
         public static AdsProvider Instance { get; private set; }
         private void Awake()
@@ -19,6 +24,18 @@ namespace Game
                 return;
             }
             Destroy(gameObject);
+        }
+
+        private void Update()
+        {
+            if (!InApp.Instance.ShowAds) return;
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                Intro();
+            }else
+            {
+                _timer = 0;
+            }
         }
 
         public void RewardAds(int index) // Логика выбора рекламмы
@@ -62,6 +79,31 @@ namespace Game
                 SetupAds.Instance.SpawnHero.AdsSpawn();
                 _rewardIndex = -1;
             }
+        }
+
+        private void Intro()
+        {
+            _timer += Time.deltaTime;
+
+            if (_timer >= _delayIntro)
+            {
+                Time.timeScale = 0f;
+                SetupAds.Instance.WindowIntro.Show();
+                SetupAds.Instance.WindowIntro.SetTimer(_timerPause);
+                _timerPause -= Time.unscaledDeltaTime;
+                if (_timerPause <= 0)
+                {
+                    ShowIntroAds();
+                    _timerPause = 2f;
+                    _timer = 0f;
+                    SetupAds.Instance.WindowIntro.Hide();
+                }
+            }
+        }
+
+        private void ShowIntroAds()
+        {
+            YandexGame.FullscreenShow();
         }
     }
 }

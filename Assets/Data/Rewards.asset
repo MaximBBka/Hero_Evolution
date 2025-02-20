@@ -17,27 +17,27 @@ MonoBehaviour:
     AddMoney: 1250
     AddStrong: 15
     RemoveStrong: 0
-  - Strong: 125
+  - Strong: 375
     AddMoney: 2500
     AddStrong: 25
     RemoveStrong: 12
-  - Strong: 500
+  - Strong: 1500
     AddMoney: 5000
     AddStrong: 50
     RemoveStrong: 25
-  - Strong: 900
+  - Strong: 2700
     AddMoney: 8000
     AddStrong: 100
     RemoveStrong: 50
-  - Strong: 1800
+  - Strong: 5400
     AddMoney: 12000
     AddStrong: 200
     RemoveStrong: 100
-  - Strong: 3200
+  - Strong: 9600
     AddMoney: 15000
     AddStrong: 300
     RemoveStrong: 150
-  - Strong: 6000
+  - Strong: 18000
     AddMoney: 18000
     AddStrong: 400
     RemoveStrong: 200

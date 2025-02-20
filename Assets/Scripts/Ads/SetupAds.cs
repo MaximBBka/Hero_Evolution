@@ -7,9 +7,10 @@ namespace Game
 {
     public class SetupAds : MonoBehaviour
     {
-        [field: SerializeField] public WindowAds WindowAds {  get; private set; }
-        [field: SerializeField] public UIRecources UIRecources {  get; private set; }
-        [field: SerializeField] public SpawnHero SpawnHero {  get; private set; }
+        [field: SerializeField] public WindowAds WindowAds { get; private set; }
+        [field: SerializeField] public UIRecources UIRecources { get; private set; }
+        [field: SerializeField] public SpawnHero SpawnHero { get; private set; }
+        [field: SerializeField] public WindowIntroAds WindowIntro { get; private set; }
 
 
         [Inject]

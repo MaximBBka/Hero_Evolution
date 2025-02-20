@@ -2332,7 +2332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8235294}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3050,13 +3050,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Music: {fileID: 320510996}
   Sound: {fileID: 320510995}
-  ClickHero: []
+  ClickHero:
+  - {fileID: 8300000, guid: 245c9ac56332f4b47b1e7c42901636b3, type: 3}
+  - {fileID: 8300000, guid: 38f538ea2747ed44f93ac0b437bfaf71, type: 3}
   Fight:
-  - {fileID: 8300000, guid: 6e28acef8a6535c41bbd9914f8ba8535, type: 3}
-  - {fileID: 8300000, guid: b22ee3dae5b2ef1469bc87826492c11f, type: 3}
+  - {fileID: 8300000, guid: 79fae20075c911544bfb610eb781ea99, type: 3}
+  - {fileID: 8300000, guid: e48e54f7c83b69342ac3304698714012, type: 3}
+  - {fileID: 8300000, guid: 4ec2e5460042d1d42828c61f7cb2153b, type: 3}
   Merge: []
   ButtonUpgardeStrong: {fileID: 0}
-  MusicMain: {fileID: 8300000, guid: 2611114f682fec64da2f95dfa7600e73, type: 3}
+  MusicClips: []
   MusicBattle: {fileID: 8300000, guid: 6fc6638d6ea87004abb77f2c15ac325d, type: 3}
   Win: {fileID: 8300000, guid: 65080a3585e8b99458605a221cd2bb5c, type: 3}
   Lose: {fileID: 8300000, guid: f6013db9742e99e46b496491a8e8c4ab, type: 3}
@@ -4517,14 +4520,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8627451}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9eab39063214eeba16deb4498687d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63128e5af0cdc46bfbd4a90aac012629, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8380,14 +8383,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8627451}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d9eab39063214eeba16deb4498687d9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 63128e5af0cdc46bfbd4a90aac012629, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -12308,7 +12311,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_TargetDisplay: 0
 --- !u!1 &1256633420
 GameObject:
@@ -12962,7 +12965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14006,7 +14009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.7529412}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

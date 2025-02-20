@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using YG;
 
@@ -25,6 +26,7 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _textTutorialDescription1;
         [SerializeField] private TextMeshProUGUI _textTutorialDescription2;
         [SerializeField] private TextMeshProUGUI _textTutorialDescription3;
+        [SerializeField] private TextMeshProUGUI _textPrice;
 
 
         private void Start()
@@ -42,12 +44,13 @@ namespace Game
                 _textButtonFight.SetText("В бой");
                 _textButtonUpHero.SetText("Продолжить");
                 _textTitleTutorial.SetText("Обучение");
-                _textTitleTutorial1.SetText(" 1. Объединяй героев что бы получить нового!");
+                _textTitleTutorial1.SetText(" 1. Объединяй спрунки что бы получить нового!");
                 _textTitleTutorial2.SetText(" 2. Кликай на героя что бы заработать монет!");
                 _textTitleTutorial3.SetText(" 3. Описание");
                 _textTutorialDescription1.SetText("Книга со всеми героями");
                 _textTutorialDescription2.SetText("Ваша сила");
                 _textTutorialDescription3.SetText("Ресурсы для улучшения силы");
+                _textPrice.SetText($"{YandexGame.purchases[0].price}") ;
             }
             else if (YandexGame.EnvironmentData.language == "en")
             {
@@ -62,12 +65,13 @@ namespace Game
                 _textButtonFight.SetText("Into battle");
                 _textButtonUpHero.SetText("Continue");
                 _textTitleTutorial.SetText("Training");
-                _textTitleTutorial1.SetText(" 1. Combine heroes to get a new one!");
+                _textTitleTutorial1.SetText(" 1. Combine sprunki to get a new one!");
                 _textTitleTutorial2.SetText(" 2. Click on the hero to earn coins!");
                 _textTitleTutorial3.SetText(" 3. Description");
                 _textTutorialDescription1.SetText("A book with all the characters");
                 _textTutorialDescription2.SetText("Your strength");
                 _textTutorialDescription3.SetText("Resources for improving strength");
+                _textPrice.SetText($"{YandexGame.purchases[0].price}");
             }
             else if (YandexGame.EnvironmentData.language == "tr")
             {
@@ -82,12 +86,13 @@ namespace Game
                 _textButtonFight.SetText("Savaşa");
                 _textButtonUpHero.SetText("Devam et");
                 _textTitleTutorial.SetText("Eğitim");
-                _textTitleTutorial1.SetText(" 1. Yenisini almak için kahramanları birleştir!");
+                _textTitleTutorial1.SetText(" 1. Yenisini sprunklar için kahramanları birleştir!");
                 _textTitleTutorial2.SetText(" 2. Para kazanmak için kahramana tıkla!");
                 _textTitleTutorial3.SetText(" 3. Açıklama");
                 _textTutorialDescription1.SetText("Tüm kahramanlarla kitap");
                 _textTutorialDescription2.SetText("Gücünüz");
                 _textTutorialDescription3.SetText("Gücü artıracak kaynaklar");
+                _textPrice.SetText($"{YandexGame.purchases[0].price}");
             }
         }
     }

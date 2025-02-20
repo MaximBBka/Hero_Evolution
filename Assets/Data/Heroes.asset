@@ -13,38 +13,38 @@ MonoBehaviour:
   m_Name: Heroes
   m_EditorClassIdentifier: 
   ModelHeroes:
-  - Prefab: {fileID: 1883197808143186703, guid: 18813bef6a41297458ac4ac2f26aa88b, type: 3}
-    Image: {fileID: 21300000, guid: cb6221efa8754444490125e77ba492a3, type: 3}
+  - Prefab: {fileID: 8770802100976764180, guid: 94661c533af6ea640aea09a7bea967aa, type: 3}
+    Image: {fileID: 21300000, guid: aaa83d4c88e6b244f8d024cb96db1f2f, type: 3}
     Heath: 1
     Damage: 1
     Strong: 1
-    Price: 10
+    Price: 20
     GetMoney: 1
     GetRes: 1
     Index: 1
     SpawnTotal: 0
-  - Prefab: {fileID: 3358965819880816154, guid: 28e9ad9f1c8143d499c17dc2eb145b36, type: 3}
-    Image: {fileID: 21300000, guid: b10f758e9dbb36c4892293624b8e08fe, type: 3}
+  - Prefab: {fileID: -5590059841955417261, guid: e33bc10f4d587a04c9be7b0b23227237, type: 3}
+    Image: {fileID: 21300000, guid: 31d246ad32f702d44a356f1f87358be8, type: 3}
     Heath: 2
     Damage: 2
     Strong: 2
-    Price: 80
+    Price: 160
     GetMoney: 2
     GetRes: 1
     Index: 2
     SpawnTotal: 30
-  - Prefab: {fileID: 842303448786175165, guid: 1ff0788d0664e1e4290ff40be5012e32, type: 3}
-    Image: {fileID: 21300000, guid: eb7886ac8b832f6408218f2ec26edaf0, type: 3}
+  - Prefab: {fileID: 7453448044648860066, guid: 4326c49d501ae3043aa955f3dbcf4fb1, type: 3}
+    Image: {fileID: 21300000, guid: 319e624d6bf5cb941a65a2dd5a79a567, type: 3}
     Heath: 3
     Damage: 2
     Strong: 3
-    Price: 200
+    Price: 400
     GetMoney: 5
     GetRes: 1
     Index: 3
     SpawnTotal: 90
-  - Prefab: {fileID: 8299303108193776122, guid: 06f1f59d5a1ef63489c6878d21474bcd, type: 3}
-    Image: {fileID: 21300000, guid: 348807b146dd7e44ca8b2cbe617df439, type: 3}
+  - Prefab: {fileID: 5849834478344374041, guid: adb95129b0a8c1449959e57be475ff4c, type: 3}
+    Image: {fileID: 21300000, guid: 4cac671c2d1ed124cb15a1ac8f22c628, type: 3}
     Heath: 5
     Damage: 3
     Strong: 5
@@ -53,363 +53,163 @@ MonoBehaviour:
     GetRes: 1
     Index: 4
     SpawnTotal: 150
-  - Prefab: {fileID: 1399250881735878981, guid: 1f932d497fea65e479e74d8430b1e607, type: 3}
-    Image: {fileID: 21300000, guid: b5bb7601c0260d543b0136306f9d2d54, type: 3}
+  - Prefab: {fileID: 3058312698457014852, guid: 0fd618305347aee49afe2650ad97ac97, type: 3}
+    Image: {fileID: 21300000, guid: 6b5fab6f54f46434c8cc03bc29a23dee, type: 3}
     Heath: 7
     Damage: 4
     Strong: 10
-    Price: 900
+    Price: 800
     GetMoney: 10
     GetRes: 2
     Index: 5
     SpawnTotal: 250
-  - Prefab: {fileID: 9027603136602799179, guid: 644e4a84223752942b84230d768eedd2, type: 3}
-    Image: {fileID: 21300000, guid: 1f08cea2b5417884f820849b733dd8c3, type: 3}
+  - Prefab: {fileID: 750153586168487577, guid: d4263441e5f11274f884dce020eae54b, type: 3}
+    Image: {fileID: 21300000, guid: c76d13e7695cf144299e5da5976e06ae, type: 3}
     Heath: 10
     Damage: 5
     Strong: 15
-    Price: 600
+    Price: 1200
     GetMoney: 15
     GetRes: 2
     Index: 6
     SpawnTotal: 350
-  - Prefab: {fileID: 7080796436965147715, guid: 768893c7cc4311d489b3eecf7c517ae5, type: 3}
-    Image: {fileID: 21300000, guid: 8ac5cdc5ee0eb774a9a19c73cae287d4, type: 3}
+  - Prefab: {fileID: 8210884736830196534, guid: 2fb842a6197012b478f5d7d3b616cf38, type: 3}
+    Image: {fileID: 21300000, guid: 1d9b66f5f426f484a8744d3052e0d064, type: 3}
     Heath: 14
     Damage: 5
     Strong: 20
-    Price: 750
+    Price: 1500
     GetMoney: 20
     GetRes: 2
     Index: 7
     SpawnTotal: 450
-  - Prefab: {fileID: 1637698230391432485, guid: 651c022b10bc33d4587f9ea15cde1fd0, type: 3}
-    Image: {fileID: 21300000, guid: 0b71420382cea494382a4ab226207976, type: 3}
+  - Prefab: {fileID: 6474326998901160387, guid: 834220a2aa2d5f14a888f13c7f85bc73, type: 3}
+    Image: {fileID: 21300000, guid: 7bc9a432f259aa44d877c32131169d89, type: 3}
     Heath: 15
     Damage: 6
     Strong: 25
-    Price: 850
+    Price: 1700
     GetMoney: 20
     GetRes: 2
     Index: 8
     SpawnTotal: 550
-  - Prefab: {fileID: 8387043489022855733, guid: 14a8056f43a87d84aa698b1bdc6a85a3, type: 3}
-    Image: {fileID: 21300000, guid: 3f39af5e3f15ec4479c70ab538bc7929, type: 3}
+  - Prefab: {fileID: 6401358352251589040, guid: 1469bbaac4f32854590e4bbd01dfba85, type: 3}
+    Image: {fileID: 21300000, guid: 4084f97e0c4394645adc73a19df46794, type: 3}
     Heath: 20
     Damage: 7
     Strong: 30
-    Price: 1000
+    Price: 2000
     GetMoney: 25
     GetRes: 3
     Index: 9
     SpawnTotal: 650
-  - Prefab: {fileID: 7826481824518515494, guid: 8fe3130b46fa2cd459164c0d6517c8ee, type: 3}
-    Image: {fileID: 21300000, guid: ffb49cb4a67e24e46b54ea3950f5c2c8, type: 3}
+  - Prefab: {fileID: 5802863948164172218, guid: 6009fe39a01bc484da0f2ed4fd7bd41b, type: 3}
+    Image: {fileID: 21300000, guid: 7128220f902a3ce44baac987569998b3, type: 3}
     Heath: 24
     Damage: 10
     Strong: 35
-    Price: 1300
+    Price: 2600
     GetMoney: 30
     GetRes: 3
     Index: 10
     SpawnTotal: 750
-  - Prefab: {fileID: 6327865630508946064, guid: 539699ffa11a6ac43b9a481754d53db0, type: 3}
-    Image: {fileID: 21300000, guid: 8da9982e11ace75448737b9f4c058e10, type: 3}
+  - Prefab: {fileID: 265716008488610022, guid: 4170eceaa98ebb0409c7f5b3e369aaae, type: 3}
+    Image: {fileID: 21300000, guid: 926fb756a1d188042966c4b9e8eacf56, type: 3}
     Heath: 28
     Damage: 12
     Strong: 40
-    Price: 1550
+    Price: 3100
     GetMoney: 35
     GetRes: 3
     Index: 11
     SpawnTotal: 850
-  - Prefab: {fileID: 3980735074658853886, guid: ce91ab9a7dbd79f4aad0d5ffeb5b99c3, type: 3}
-    Image: {fileID: 21300000, guid: be9ed8bb02a72b64db405d6a7df57d62, type: 3}
+  - Prefab: {fileID: 7596436914011075106, guid: 79cabe3e20c25344e811c74e23ff9d41, type: 3}
+    Image: {fileID: 21300000, guid: 526096ba65828de40ab938949c68337f, type: 3}
     Heath: 30
     Damage: 13
     Strong: 45
-    Price: 1800
+    Price: 3600
     GetMoney: 40
     GetRes: 3
     Index: 12
     SpawnTotal: 950
-  - Prefab: {fileID: 7906473951570209152, guid: 9a116972bad2d5146887dd6feeb2e49b, type: 3}
-    Image: {fileID: 21300000, guid: 95b841be63ccc4443a2cb8b69d5b4ec6, type: 3}
+  - Prefab: {fileID: 637257748827650307, guid: 80462273e312ec841a5385c978011111, type: 3}
+    Image: {fileID: 21300000, guid: 85d3f51d439595d42a2a28c6c0547728, type: 3}
     Heath: 36
     Damage: 16
     Strong: 50
-    Price: 2100
+    Price: 4200
     GetMoney: 50
     GetRes: 3
     Index: 13
     SpawnTotal: 1050
-  - Prefab: {fileID: 4465042452935736641, guid: 310d49a4d0debf84f964e56351e8cf15, type: 3}
-    Image: {fileID: 21300000, guid: 7144197d68553674290b3fbda8a886c0, type: 3}
+  - Prefab: {fileID: 4728483356183816965, guid: 3506b6ba31623874b881d1221e07c02c, type: 3}
+    Image: {fileID: 21300000, guid: 97c9d5a668a3e7d4b9cd61aad896e2c7, type: 3}
     Heath: 40
     Damage: 18
     Strong: 55
-    Price: 2300
+    Price: 4600
     GetMoney: 55
     GetRes: 3
     Index: 14
     SpawnTotal: 1150
-  - Prefab: {fileID: 3175169911360145004, guid: f35bc43793cf4df4f995fdd862bd5bea, type: 3}
-    Image: {fileID: 21300000, guid: 5b13074d70189db4eb56a2c604da6b13, type: 3}
+  - Prefab: {fileID: 8656882025354908538, guid: 7696e3cb5c154694d9da3b2e0a0cb8df, type: 3}
+    Image: {fileID: 21300000, guid: b124acabcfbd2e5458dd4cf1d5d2bedb, type: 3}
     Heath: 45
     Damage: 21
     Strong: 60
-    Price: 2500
+    Price: 5000
     GetMoney: 60
     GetRes: 3
     Index: 15
     SpawnTotal: 1250
-  - Prefab: {fileID: 676305617082009490, guid: 0926625f87363e44ca9b716139d2deb9, type: 3}
-    Image: {fileID: 21300000, guid: 5c64d8c9b87fd4648a7b2a7b8c2a28f7, type: 3}
+  - Prefab: {fileID: 5536145521114459549, guid: dc57c70903098ea408873f6546a2774c, type: 3}
+    Image: {fileID: 21300000, guid: cd38c3e07c9fe2545b5e11df89b98ff4, type: 3}
     Heath: 50
     Damage: 24
     Strong: 65
-    Price: 2850
+    Price: 5700
     GetMoney: 65
     GetRes: 3
     Index: 16
     SpawnTotal: 1350
-  - Prefab: {fileID: 7295713382185361894, guid: 08ea74f3205a6764c91c5e9f039cd5b2, type: 3}
-    Image: {fileID: 21300000, guid: b03507b20c9bcbd48851dd9b3a38b9da, type: 3}
+  - Prefab: {fileID: 6715816847815618537, guid: 13fd848595c92ac4dbc9b264199160ee, type: 3}
+    Image: {fileID: 21300000, guid: aa1832db5dfe1ac4dba3d163bfea7bbd, type: 3}
     Heath: 57
     Damage: 70
     Strong: 64000
-    Price: 3100
+    Price: 6200
     GetMoney: 70
     GetRes: 3
     Index: 17
     SpawnTotal: 1450
-  - Prefab: {fileID: 6271997392945267254, guid: 2007b74f85f768d4a9487e33136c7921, type: 3}
-    Image: {fileID: 21300000, guid: f2e4cb8b9e3bee449a41c54fce98ec8c, type: 3}
+  - Prefab: {fileID: 7214455197355666713, guid: e5b4580e4d32387458b7307f4e5eee13, type: 3}
+    Image: {fileID: 21300000, guid: b63c3300d6f407b4ea65c8604d7ec8e8, type: 3}
     Heath: 62
     Damage: 33
     Strong: 75
-    Price: 3500
+    Price: 7000
     GetMoney: 75
     GetRes: 3
     Index: 18
     SpawnTotal: 1550
-  - Prefab: {fileID: 5616989840786410695, guid: 40d52807a0d180b43a244370ce7f635a, type: 3}
-    Image: {fileID: 21300000, guid: 8afed1e0bb0972540bcca70461cd7ab4, type: 3}
+  - Prefab: {fileID: 3034272662258884103, guid: ef449d6eb94aa42439adfffc07e36d7a, type: 3}
+    Image: {fileID: 21300000, guid: 8b9e272d844b0854498a76bd7533fe93, type: 3}
     Heath: 66
     Damage: 35
     Strong: 80
-    Price: 3850
+    Price: 7700
     GetMoney: 80
     GetRes: 3
     Index: 19
     SpawnTotal: 1650
-  - Prefab: {fileID: 6228699756366712506, guid: 33670faffd7e1a34da9368c85cdb6c76, type: 3}
-    Image: {fileID: 21300000, guid: 430aa7a35f7a067459e617119d61a333, type: 3}
+  - Prefab: {fileID: 4091434974435674176, guid: 710698581806a1c4cac6cbed8afd1714, type: 3}
+    Image: {fileID: 21300000, guid: e64fee6080cde3e48bd3b3fa0ba327e9, type: 3}
     Heath: 70
-    Damage: 38
+    Damage: 40
     Strong: 85
-    Price: 4100
+    Price: 8000
     GetMoney: 85
     GetRes: 3
     Index: 20
     SpawnTotal: 1750
-  - Prefab: {fileID: 8695103295989992917, guid: d07d74d588bb44a42add54a1d7141dc9, type: 3}
-    Image: {fileID: 21300000, guid: f628657e35af992448d6df9f5f92a24d, type: 3}
-    Heath: 77
-    Damage: 43
-    Strong: 90
-    Price: 4500
-    GetMoney: 90
-    GetRes: 3
-    Index: 21
-    SpawnTotal: 1850
-  - Prefab: {fileID: 9013305172248025202, guid: 445bf256e35bc9c428fc509c9372a6ce, type: 3}
-    Image: {fileID: 21300000, guid: 38393d0223dd970469d5e278fb104422, type: 3}
-    Heath: 83
-    Damage: 47
-    Strong: 95
-    Price: 4900
-    GetMoney: 95
-    GetRes: 3
-    Index: 22
-    SpawnTotal: 1950
-  - Prefab: {fileID: 5367423939566311466, guid: 819416a575dc20f408e6ea529eb0628f, type: 3}
-    Image: {fileID: 21300000, guid: 38393d0223dd970469d5e278fb104422, type: 3}
-    Heath: 90
-    Damage: 51
-    Strong: 100
-    Price: 5400
-    GetMoney: 100
-    GetRes: 3
-    Index: 23
-    SpawnTotal: 2050
-  - Prefab: {fileID: 9070540445485573917, guid: 242d6bc2cbb4a674d83eec0cf3576e8a, type: 3}
-    Image: {fileID: 21300000, guid: 8d6f4cb11a0380b4a86e31cc22ebf00f, type: 3}
-    Heath: 93
-    Damage: 52
-    Strong: 105
-    Price: 5650
-    GetMoney: 105
-    GetRes: 3
-    Index: 24
-    SpawnTotal: 2150
-  - Prefab: {fileID: 2885198799113246651, guid: 7b2dc7b11afa71541b681dd0c9aa2964, type: 3}
-    Image: {fileID: 21300000, guid: a20e05e93c6dbe04189986397fa3e620, type: 3}
-    Heath: 98
-    Damage: 58
-    Strong: 110
-    Price: 6000
-    GetMoney: 110
-    GetRes: 3
-    Index: 25
-    SpawnTotal: 2250
-  - Prefab: {fileID: 4160976357043980074, guid: a9731af6f20816b49b3c9da799d23bdb, type: 3}
-    Image: {fileID: 21300000, guid: 9372c967bdbe8f04390828d99ce4830c, type: 3}
-    Heath: 104
-    Damage: 60
-    Strong: 115
-    Price: 6400
-    GetMoney: 115
-    GetRes: 3
-    Index: 26
-    SpawnTotal: 2350
-  - Prefab: {fileID: 4938261678976241485, guid: 447287fa031e40643919f941f7073212, type: 3}
-    Image: {fileID: 21300000, guid: f70dac249b221f445a0b715f8414dfe7, type: 3}
-    Heath: 110
-    Damage: 70
-    Strong: 120
-    Price: 6800
-    GetMoney: 120
-    GetRes: 4
-    Index: 27
-    SpawnTotal: 2450
-  - Prefab: {fileID: 3093111069714298444, guid: 7b1ec4f687d940d468e8e64057c6778f, type: 3}
-    Image: {fileID: 21300000, guid: 4703fb06d7e90d84ea332d7c1dbf13a8, type: 3}
-    Heath: 115
-    Damage: 75
-    Strong: 125
-    Price: 7100
-    GetMoney: 125
-    GetRes: 4
-    Index: 28
-    SpawnTotal: 2550
-  - Prefab: {fileID: 5839093828608451322, guid: 1ffce26e962595c41abc6fc0b2df4995, type: 3}
-    Image: {fileID: 21300000, guid: d6ed07dcd179ee041bf6f0ef1b8cca04, type: 3}
-    Heath: 125
-    Damage: 83
-    Strong: 130
-    Price: 7400
-    GetMoney: 130
-    GetRes: 4
-    Index: 29
-    SpawnTotal: 2650
-  - Prefab: {fileID: 5705940794903849245, guid: 260887f249bca074da5ef6274a512b90, type: 3}
-    Image: {fileID: 21300000, guid: 83ae6762dc5c3a24a9c86525f5ff6221, type: 3}
-    Heath: 133
-    Damage: 90
-    Strong: 145
-    Price: 8000
-    GetMoney: 135
-    GetRes: 4
-    Index: 30
-    SpawnTotal: 2750
-  - Prefab: {fileID: 2846955056831389991, guid: 4bf548c8e30c2ce4baf99d21489b83a6, type: 3}
-    Image: {fileID: 21300000, guid: 1b4136a50866c8545ad9f37ec0696090, type: 3}
-    Heath: 145
-    Damage: 92
-    Strong: 150
-    Price: 8400
-    GetMoney: 140
-    GetRes: 4
-    Index: 31
-    SpawnTotal: 2850
-  - Prefab: {fileID: 3828761603201169271, guid: 049f552c808a9af4abfb133f1545c97b, type: 3}
-    Image: {fileID: 21300000, guid: 1107c27dc37d2d347a6c999c737f215b, type: 3}
-    Heath: 150
-    Damage: 96
-    Strong: 155
-    Price: 8700
-    GetMoney: 145
-    GetRes: 4
-    Index: 32
-    SpawnTotal: 2950
-  - Prefab: {fileID: 4399995341579110767, guid: ee790c4c8ed45e84ca7d68d6cdbfa0c1, type: 3}
-    Image: {fileID: 21300000, guid: 604a4bd0e20314e46a33e86e89ccfb9f, type: 3}
-    Heath: 160
-    Damage: 100
-    Strong: 160
-    Price: 9100
-    GetMoney: 150
-    GetRes: 4
-    Index: 33
-    SpawnTotal: 3050
-  - Prefab: {fileID: 7128407885072842673, guid: d3ecfa32e05171f478f80838be39bae6, type: 3}
-    Image: {fileID: 21300000, guid: dccd84ca04b240f43afaef02de6093d4, type: 3}
-    Heath: 165
-    Damage: 103
-    Strong: 165
-    Price: 9400
-    GetMoney: 155
-    GetRes: 4
-    Index: 34
-    SpawnTotal: 3150
-  - Prefab: {fileID: 7974199217072322339, guid: 5b1cbf6e2b2baee4bb1ef181343f9398, type: 3}
-    Image: {fileID: 21300000, guid: bdaa4605a4607f6458f31c9c034bf95e, type: 3}
-    Heath: 170
-    Damage: 110
-    Strong: 170
-    Price: 9700
-    GetMoney: 160
-    GetRes: 4
-    Index: 35
-    SpawnTotal: 3250
-  - Prefab: {fileID: 7833605858494658607, guid: 18b1279f4bfeeda478af90c6354436d7, type: 3}
-    Image: {fileID: 21300000, guid: 90e824bea7ae8c74589baf1dc0d75351, type: 3}
-    Heath: 180
-    Damage: 120
-    Strong: 175
-    Price: 10500
-    GetMoney: 165
-    GetRes: 5
-    Index: 36
-    SpawnTotal: 3350
-  - Prefab: {fileID: 1934453765907055890, guid: e00fcf9de50a26949a572f45b776c957, type: 3}
-    Image: {fileID: 21300000, guid: ca0e1b04e9d8ab846817474b19e2de74, type: 3}
-    Heath: 190
-    Damage: 125
-    Strong: 180
-    Price: 10900
-    GetMoney: 170
-    GetRes: 5
-    Index: 37
-    SpawnTotal: 3450
-  - Prefab: {fileID: 339727825793116976, guid: a916f7b8003513d45bc96a764e79d607, type: 3}
-    Image: {fileID: 21300000, guid: f9e03c06c41a2f8408a04a6c3b5019f5, type: 3}
-    Heath: 200
-    Damage: 130
-    Strong: 185
-    Price: 11400
-    GetMoney: 175
-    GetRes: 5
-    Index: 38
-    SpawnTotal: 3550
-  - Prefab: {fileID: 6991698818905359633, guid: a90f10468873f2b4286a5b23849ef0f2, type: 3}
-    Image: {fileID: 21300000, guid: 5d1e1542b02914842a8b45ed3ab562c9, type: 3}
-    Heath: 220
-    Damage: 140
-    Strong: 190
-    Price: 11800
-    GetMoney: 180
-    GetRes: 5
-    Index: 39
-    SpawnTotal: 3650
-  - Prefab: {fileID: 115172462643964735, guid: d5899220c2051274a8fa7d667238f1e8, type: 3}
-    Image: {fileID: 21300000, guid: 83eb8cdbebd68d0469ce0e460e778ba4, type: 3}
-    Heath: 250
-    Damage: 160
-    Strong: 195
-    Price: 13000
-    GetMoney: 185
-    GetRes: 5
-    Index: 40
-    SpawnTotal: 3750

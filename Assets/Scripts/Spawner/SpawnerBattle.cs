@@ -169,7 +169,7 @@ namespace Game
             {
                 _hero.Remove(hero);
                 hero.OnDeath -= OnDeath;
-                Destroy(hero.gameObject, 1f);
+                Destroy(hero.gameObject, 0.5f);
                 RecalculateTarget();
                 return;
             }
@@ -177,7 +177,7 @@ namespace Game
             {
                 _enemy.Remove(hero);
                 hero.OnDeath -= OnDeath;
-                Destroy(hero.gameObject, 1f);
+                Destroy(hero.gameObject, 0.5f);
                 RecalculateTarget();
             }
         }

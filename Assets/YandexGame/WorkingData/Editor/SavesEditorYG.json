@@ -1,0 +1,47 @@
+{
+    "idSave": 43,
+    "isFirstSession": false,
+    "language": "ru",
+    "promptDone": false,
+    "money": 1,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "BaseHeroes": [
+        3,
+        3,
+        3,
+        3,
+        3
+    ],
+    "ElementBookOpen": [
+        0,
+        2,
+        1
+    ],
+    "TotalRes": [
+        3,
+        3,
+        3
+    ],
+    "Strong": 15,
+    "Money": 40,
+    "MaxStrong": 15,
+    "TotalBattle": 0,
+    "BattleWin": 2,
+    "IndexOpenHero": 3,
+    "LevelStrong": 0,
+    "TotalSpawnUnits": 0,
+    "CurrentSpawn": {
+        "instanceID": 29004
+    },
+    "AdsSpawn": {
+        "instanceID": 28998
+    },
+    "isFirstOpen": false,
+    "EnemyName": "",
+    "EnemyStrong": 0
+}

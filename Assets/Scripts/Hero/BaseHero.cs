@@ -45,7 +45,7 @@ namespace Game
             vector.z = layerManager.SetLayer(transform.position.y) + Random.Range(0.0001f, 0.1111f);
             transform.position = vector;
 
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 2);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i] != _collider2D && colliders[i].TryGetComponent<BaseHero>(out BaseHero baseHero))
@@ -106,7 +106,7 @@ namespace Game
 
         private BaseHero SearchUnit()
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, transform.localScale.x / 4);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.5f);
             for (int i = 0; i < colliders.Length; i++)
             {
                 if (colliders[i] != _collider2D && colliders[i].TryGetComponent<BaseHero>(out BaseHero baseHero))
@@ -119,7 +119,7 @@ namespace Game
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(transform.position, transform.localScale.x / 2);
+            Gizmos.DrawWireSphere(transform.position, 0.5f);
         }
 
         public void Damage(float damage)

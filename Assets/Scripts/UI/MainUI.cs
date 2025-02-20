@@ -91,15 +91,13 @@ namespace Game
         public void AddMoney(int money)
         {
             _money += money;
-            if(_money <= 0)
-            {
-                _money = 0;
-            }
+            _money = Mathf.Clamp(_money, 0, int.MaxValue);
             UpdateInfo();
         }
         public void AddStrong(int strong)
         {
             _totalStrong += strong;
+            _totalStrong = Mathf.Clamp(_totalStrong, 0, int.MaxValue);
             UpdateInfo();
             Save();
         }

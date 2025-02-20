@@ -29,3 +29,37 @@ mergeInto(LibraryManager.library,
 		BuyPayments(UTF8ToString(id));
 	}
 });
+
+
+
+mergeInto(LibraryManager.library, {
+	BayNoAds: function ()
+	{
+	  payments.purchase({ id: 'NoAds' }).then(purchase => {
+			  console.log('Покупка успешно совершена!');
+		myGameInstance.SendMessage("InApp", "BayTrue");
+		  }).catch(err => {
+			  console.log('Покупка не удалась :(');
+		  })
+	},
+  
+	HasBayNoAds: function()
+	{
+	  payments.getPurchases().then(purchases => {
+		if (purchases.some(purchase => purchase.productID === 'NoAds')) {
+		  myGameInstance.SendMessage("InApp", "BayTrue");
+		}
+	  }).catch(err => {
+		// Выбрасывает исключение USER_NOT_AUTHORIZED для неавторизованных пользователей.
+	  })
+	},
+  
+	DeleteNoAds: function(){
+	  payments.purchase({ id: 'NoAds' }).then(purchase => {
+		// Покупка успешно совершена!
+		payments.consumePurchase(purchase.purchaseToken);
+		myGameInstance.SendMessage("InApp", "DeleteBayTrue");
+	  });
+	}
+  });
+  

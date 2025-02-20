@@ -15,6 +15,7 @@ namespace Game
         [SerializeField] private TextMeshProUGUI _textNickName;
         [SerializeField] private TextMeshProUGUI _textStrongEnemy;
         [SerializeField] private string[] _nickname;
+        [SerializeField] private float _timer = 10;
 
         private MainUI _mainUI;
         private SpawnHero _spawnHero;
@@ -29,7 +30,6 @@ namespace Game
             _mainUI = ui;
             _spawnHero = spawnHero;
         }
-        private float _timer = 120;
         private void Start()
         {
             Load();
@@ -55,7 +55,7 @@ namespace Game
                 _timer -= 1;
                 yield return new WaitForSeconds(1f);
             }
-            _timer = 120;
+            _timer = 90;
             if (_spawnHero._listHero.Count > 0)
             {
                 SetStrongEnemy();
